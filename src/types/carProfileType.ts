@@ -1,7 +1,7 @@
 import { gasType } from './gasType';
 
 export type carProfile = {
-  picture: string;
+  picture: string[];
   registrationNumber: string;
   color: string;
   year: number;
