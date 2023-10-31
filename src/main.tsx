@@ -10,7 +10,6 @@ import {
   NotFound,
   SignUp,
 } from './pages';
-import { PageContext } from './context';
 
 const routing = createBrowserRouter([
   {
@@ -45,8 +44,6 @@ const routing = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <PageContext.Provider value={null}>
-      <RouterProvider router={routing} />
-    </PageContext.Provider>
+    <RouterProvider router={routing} />
   </StrictMode>,
 );
