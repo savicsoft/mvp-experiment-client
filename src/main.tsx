@@ -11,6 +11,7 @@ import {
   SignUp,
 } from './pages';
 
+// routing
 const routing = createBrowserRouter([
   {
     path: '/',
@@ -41,6 +42,8 @@ const routing = createBrowserRouter([
     element: <NotFound />,
   },
 ]);
+
+//render
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <StrictMode>
