@@ -1,6 +1,6 @@
-import { useGeoLoc } from '@/components/useGeoLoc';
+import { useGeoLoc } from '@/hooks';
 
-const GuestView = () => {
+export const GuestView = () => {
   const locationData = useGeoLoc();
 
   return locationData ? (
@@ -13,5 +13,3 @@ const GuestView = () => {
     <div className='loading'> LOADING </div>
   );
 };
-
-export default GuestView;

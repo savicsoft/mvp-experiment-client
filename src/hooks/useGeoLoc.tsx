@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 
+type LocationData = {};
+
 export const useGeoLoc = () => {
-  const [locationData, setLocationData] = useState(null);
+  const [locationData, setLocationData] = useState<LocationData | null>(null);
 
   const options = {
     enableHighAccuracy: true,
