@@ -1,9 +1,11 @@
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
-import { Test } from '@/components';
+import Routing from './Routing';
+import { RouterProvider } from 'react-router-dom';
+import './styles.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Test />
+    <RouterProvider router={Routing} />
   </StrictMode>,
 );
