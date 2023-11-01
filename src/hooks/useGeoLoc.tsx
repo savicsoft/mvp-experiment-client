@@ -5,6 +5,7 @@ type LocationData = {};
 export const useGeoLoc = () => {
   const [locationData, setLocationData] = useState<LocationData | null>(null);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const options = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -20,7 +21,7 @@ export const useGeoLoc = () => {
   }
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success, error, options);
-  }, []);
+  }, [options]);
 
   return locationData;
 };
