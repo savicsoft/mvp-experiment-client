@@ -7,6 +7,7 @@ export const Input = ({
   type,
   classNames,
   value,
+  register,
 }: InputType) => {
   return (
     <div>
@@ -16,6 +17,7 @@ export const Input = ({
         placeholder={placeholder}
         value={value}
         className={classNames}
+        {...register}
       />
     </div>
   );
