@@ -34,6 +34,8 @@ Using naming convenction from https://www.conventionalcommits.org/en/v1.0.0/#spe
 
 In file commitlint.config.cjs you can see all rules that are setuped.
 
+Before running any commits please use `npm run prepare` - to install husky locally, so it can catch errors and bugs
+
 Examples:
 - build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
 - ci: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
