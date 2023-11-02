@@ -1,13 +1,15 @@
 import { InputType } from './type';
+import { ErrorMessage } from '@hookform/error-message';
 
 export const Input = ({
   name,
   title,
   placeholder,
-  type,
+  type = 'text',
   classNames,
   value,
   register,
+  errors,
 }: InputType) => {
   return (
     <div>
@@ -19,6 +21,9 @@ export const Input = ({
         className={classNames}
         {...register}
       />
+      <span>
+        <ErrorMessage errors={errors} name={name} />
+      </span>
     </div>
   );
 };
