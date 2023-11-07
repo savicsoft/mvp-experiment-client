@@ -15,6 +15,16 @@ import {
 const routing = createBrowserRouter([
   {
     path: '/',
+    element: <DefaultView />,
+    children: [
+      {
+        path: '/dashboard',
+        element: <Dashboard />,
+      },
+    ],
+  },
+  {
+    path: '/',
     element: <GuestView />,
     children: [
       {
@@ -24,16 +34,6 @@ const routing = createBrowserRouter([
       {
         path: '/signup',
         element: <SignUp />,
-      },
-    ],
-  },
-  {
-    path: '/',
-    element: <DefaultView />,
-    children: [
-      {
-        path: '/dashboard',
-        element: <Dashboard />,
       },
     ],
   },

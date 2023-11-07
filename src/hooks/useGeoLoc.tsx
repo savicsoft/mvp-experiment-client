@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 
-type LocationData = {};
+type LocationData = {
+  longitude: string;
+  latitude: string;
+};
 
 export const useGeoLoc = () => {
   const [locationData, setLocationData] = useState<LocationData | null>(null);
@@ -11,11 +14,11 @@ export const useGeoLoc = () => {
     maximumAge: 0,
   };
 
-  function success(pos) {
+  function success(pos: any) {
     setLocationData(pos.coords);
   }
 
-  function error(err) {
+  function error(err: any) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
   useEffect(() => {
