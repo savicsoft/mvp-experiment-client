@@ -17,53 +17,69 @@ export const SignUp = () => {
     register,
     handleSubmit,
     watch,
+    setError,
     formState: { errors },
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
-  //functions and logic
-  const [passwordMessage, setPasswordMessage] = useState<string | null>(null);
-  const [validatedPasswordMessage, setValidatedPasswordMessage] = useState<
-    string | null
-  >(null);
-  const [emailMessage, setEmailMessage] = useState<string | null>(null);
+  const [password, setPassword] = useState<string | null>(null);
+  const [validPassword, setValidPassword] = useState<string | null>(null);
+  const [submit, setSubmit] = useState<boolean>(false);
 
-  const password = watch('password', '');
-  const passwordValidation = watch('validatePassword', '');
+  //functions and logic
+
+  const longMessage =
+    'Your password must contain at least one upper and lowercase letter, one number and one special character!';
 
   const checkPassword = (value: string) => {
-    setValidatedPasswordMessage('Validate password');
-
+    if (value !== validPassword) {
+      setError('validatePassword', {
+        type: 'manual',
+        message: "Passwords don't match",
+      });
+    } else {
+      setError('validatePassword', {
+        type: 'manual',
+        message: 'Passwords match',
+      });
+    }
+    setPassword(value);
     if (value.length < 8) {
-      setPasswordMessage('Password must be at least 8 letters long');
-    } else if (!/(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])/.test(value)) {
-      setPasswordMessage(
-        'Your password must contain at least one uppercase letter, one number and one special character',
-      );
+      setError('password', {
+        type: 'manual',
+        message: 'Password must be at least 8 letters long',
+      });
+    } else if (
+      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*"'])(?=.*\d).+$/.test(value)
+    ) {
+      setSubmit(false);
+      setError('password', {
+        type: 'manual',
+        message: longMessage,
+      });
     } else {
-      setPasswordMessage(null);
-    }
-  };
-
-  const CheckPassValidator = (value: string) => {
-    console.log('value', value.length);
-    console.log('password', password.length);
-    if (value.length >= password.length && password) {
-      if (password === value) {
-        setValidatedPasswordMessage('Passwords match');
-      } else {
-        setValidatedPasswordMessage("Passwords don't match");
+      setError('password', { type: 'manual', message: '' });
+      if (value === validPassword) {
+        setSubmit(true);
       }
-    } else {
-      setValidatedPasswordMessage(null);
     }
   };
 
-  const checkEmail = (value: string) => {
-    if (/^\S+@\S+\.\S+$/.test(value)) {
-      return setEmailMessage(null);
+  const checkPassValidator = (value: string) => {
+    setValidPassword(value);
+    if (value === password && !errors.password?.message) {
+      setError('validatePassword', {
+        type: 'manual',
+        message: 'Passwords match',
+      });
+      setSubmit(true);
+      console.log(validPassword);
     } else {
-      setEmailMessage('This email is not valid');
+      setSubmit(false);
+      setError('validatePassword', {
+        type: 'manual',
+        message: "Passwords don't match",
+      });
     }
   };
 
@@ -73,7 +89,10 @@ export const SignUp = () => {
         {...register('firstName', {
           required: 'First name is required',
           maxLength: 20,
-          pattern: /^[A-Za-z\u00C0-\u024F -']+$/i,
+          pattern: {
+            value: /^[A-Za-zÀ-ÖØ-öø-ÿ -']+$/i,
+            message: 'Invalid character',
+          },
         })}
         placeholder={'First Name'}
       />
@@ -82,7 +101,10 @@ export const SignUp = () => {
       <input
         {...register('lastName', {
           required: 'Last name is required',
-          pattern: /^[A-Za-z\u00C0-\u024F -']+$/i,
+          pattern: {
+            value: /^[/^[A-Za-zÀ-ÖØ-öø-ÿ -']+$/i,
+            message: 'Invalid character',
+          },
           maxLength: 20,
         })}
         placeholder={'Last Name'}
@@ -92,17 +114,24 @@ export const SignUp = () => {
       <input
         {...register('email', {
           required: 'Email is required',
-          pattern: /^\S+@\S+\.\S+$/,
+          pattern: { value: /^\S+@\S+\.\S+$/, message: 'Invalid email' },
         })}
         placeholder={'Email Address'}
-        onChange={(e) => checkEmail(e.target.value)}
       />
-      <p>{errors.email?.message || emailMessage}</p>
+      <p>{errors.email?.message}</p>
 
       <input
         {...register('password', {
           required: 'Password is required',
-          minLength: 8,
+          minLength: {
+            value: 8,
+            message: 'Password must be at least 8 letters long',
+          },
+          pattern: {
+            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*"'])(?=.*\d).+$/,
+            message: longMessage,
+          },
+          validate: (value) => value === validPassword,
         })}
         placeholder={'Password'}
         type='password'
@@ -110,21 +139,21 @@ export const SignUp = () => {
           checkPassword(e.target.value);
         }}
       />
-      <p>{passwordMessage}</p>
+      <p>{errors.password?.message}</p>
 
       <input
         {...register('validatePassword', {
-          required: 'Please validate your password',
+          required: 'Validation is required',
+          validate: (value) => value === password && submit,
         })}
         placeholder={'Validate Password'}
         type='password'
         onChange={(e) => {
-          CheckPassValidator(e.target.value);
+          checkPassValidator(e.target.value);
         }}
       />
-      <p>{validatedPasswordMessage}</p>
-
-      <input type='submit' />
+      <p>{errors.validatePassword?.message}</p>
+      {submit ? <input type='submit' /> : <></>}
       <p>
         Already registered? <Link to='/login'>Click here</Link>
       </p>
