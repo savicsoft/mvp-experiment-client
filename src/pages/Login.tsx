@@ -1,14 +1,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-
-type Inputs = {
-  firstName: string;
-  lastName: string;
-  password: string;
-  phoneNumber: string;
-  email: string;
-  validatePassword: string;
-};
+import { Inputs } from './type';
+import { Button } from '@/components/Button';
 
 export const Login = () => {
   const {
@@ -34,7 +27,7 @@ export const Login = () => {
         type='password'
       />
       <p>{errors.password?.message}</p>
-      <input type='submit' />
+      <Button type='submit' children={'Submit'} className={'btn'} />
       <p>
         Not yet registered? <Link to='/signup'>Click here</Link>
       </p>

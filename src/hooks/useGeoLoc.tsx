@@ -1,9 +1,5 @@
 import { useEffect, useState } from 'react';
-
-type LocationData = {
-  longitude: string;
-  latitude: string;
-};
+import { LocationData } from './type';
 
 export const useGeoLoc = () => {
   const [locationData, setLocationData] = useState<LocationData | null>(null);
