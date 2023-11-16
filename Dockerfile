@@ -11,4 +11,4 @@ COPY . .
 
 EXPOSE 8100
 
-CMD ["npm","run","dev","--","--host","95.111.232.186"]
+CMD ["npm","run","dev","--","--host"]
