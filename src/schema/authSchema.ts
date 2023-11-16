@@ -1,5 +1,32 @@
-import { z } from 'zod';
+import { ZodSchema, z } from 'zod';
 import { MAX_FILE_SIZE, ACCEPTED_IMAGE_TYPES } from '@/config';
+import { signUpType } from './type';
+
+//Currently setup schema for signup
+
+export const signUpSchema: ZodSchema<signUpType> = z.object({
+  firstName: z
+    .string()
+    .min(3)
+    .max(15)
+    .regex(/^[/^[A-Za-zÀ-ÖØ-öø-ÿ -']+$/i),
+  lastName: z
+    .string()
+    .min(3)
+    .max(15)
+    .regex(/^[/^[A-Za-zÀ-ÖØ-öø-ÿ -']+$/i),
+  email: z
+    .string()
+    .email()
+    .regex(/^\S+@\S+\.\S+$/),
+  password: z
+    .string()
+    .min(8)
+    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*"'])(?=.*\d).+$/),
+  validatePassword: z.string(),
+});
+
+//Possible use of schema in the future
 
 export const registrationSchema = () => {
   z.object({

@@ -1,14 +1,21 @@
 import { useGeoLoc } from '@/hooks';
-import { contextProvider } from '@/context';
+import { useAxios } from '@/context';
 import { Navigate, Outlet } from 'react-router-dom';
+import { LocationDataType } from './type';
 
 export const GuestView = () => {
-  const locationData = useGeoLoc();
+  const locationData: LocationDataType = useGeoLoc();
 
-  const token = contextProvider();
+  const { data } = useAxios();
+  let token = null;
+
+  if (data) {
+    //this is a highly specific data, that I used just for testing
+    token = data.data.results[0].login.uuid;
+  }
 
   if (token) {
-    return <Navigate to='/' />;
+    return <Navigate to='/dashboard' />;
   }
 
   return locationData ? (

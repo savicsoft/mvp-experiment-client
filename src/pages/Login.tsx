@@ -1,6 +1,6 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { Inputs } from './type';
+import { InputsType } from './type';
 import { Button } from '@/components/Button';
 
 export const Login = () => {
@@ -8,8 +8,8 @@ export const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  } = useForm<InputsType>();
+  const onSubmit: SubmitHandler<InputsType> = (data) => console.log(data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

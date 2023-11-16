@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { LocationData } from './type';
 
 export const useGeoLoc = () => {
-  const [locationData, setLocationData] = useState<LocationData | null>(null);
+  const [locationData, setLocationData] = useState<object>({});
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const options = {
@@ -11,11 +10,13 @@ export const useGeoLoc = () => {
     maximumAge: 0,
   };
 
-  function success(pos: any) {
-    setLocationData(pos.coords);
+  function success(pos: GeolocationPosition) {
+    const { longitude, latitude } = pos.coords;
+
+    setLocationData({ longitude, latitude });
   }
 
-  function error(err: any) {
+  function error(err: GeolocationPositionError) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
   useEffect(() => {
