@@ -11,4 +11,4 @@ COPY . .
 
 EXPOSE 8100
 
-CMD ["npm","run","dev"]
+CMD ["npm","run","dev","--","--host"]
