@@ -1,12 +1,14 @@
-import { useGeoLoc } from '@/hooks';
-import { useAxios } from '@/context';
+import { useAxios } from '@/hooks';
 import { Navigate, Outlet } from 'react-router-dom';
 import { LocationDataType } from './type';
+import { useGeoLoc } from '@/hooks';
 
 export const GuestView = () => {
   const locationData: LocationDataType = useGeoLoc();
+  const url: string = 'https://randomuser.me/api';
+  const key: string = 'user-data';
 
-  const { data } = useAxios();
+  const { data } = useAxios(url, key);
   let token = null;
 
   if (data) {

@@ -1,10 +1,12 @@
-import { useAxios } from '@/context';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useAxios } from '@/hooks';
+import { Navigate } from 'react-router-dom';
 import { Dashboard } from '.';
+import { useCountdownToLogin } from '@/hooks/useCountdownToLogin';
 
 export const DefaultView = () => {
-  const { data, isLoading, isError, error } = useAxios();
-  const navigate = useNavigate();
+  const url: string = 'https://randomuser.me/api';
+  const key: string = 'user-data';
+  const { data, isLoading, isError, error } = useAxios(url, key);
 
   if (isLoading) {
     return (
@@ -16,9 +18,7 @@ export const DefaultView = () => {
   }
 
   if (isError) {
-    setTimeout(() => {
-      navigate('/login');
-    }, 5000);
+    useCountdownToLogin(5000, './login');
     return (
       <div>
         <div className='text'>DefaultView</div>

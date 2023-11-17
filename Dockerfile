@@ -1,11 +1,9 @@
-FROM node:20.9.0
-
+FROM node:18.18.2
 WORKDIR /app
 
-COPY package.json .
+COPY package*.json ./
 
 RUN npm install
-
 
 COPY . .
 
