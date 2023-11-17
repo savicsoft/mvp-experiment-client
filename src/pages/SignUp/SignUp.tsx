@@ -1,25 +1,22 @@
-import { Button } from '@/components/Button';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { usePasswordLogic } from '@/hooks';
-import { InputsType } from './type';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { signUpSchema } from '@/schema';
+import { InputsType } from '@/types';
+import { Button } from '@/components';
 
 export const SignUp = () => {
   const form = useForm<InputsType>({
+    mode: 'onChange',
     resolver: zodResolver(signUpSchema),
   });
 
   const {
     register,
     handleSubmit,
+
     formState: { errors },
   } = form;
-
-  const { checkPassValidator, checkPassword, submit } = usePasswordLogic({
-    form,
-  });
 
   const onSubmit: SubmitHandler<InputsType> = (data) => console.log(data);
 
@@ -34,30 +31,16 @@ export const SignUp = () => {
       <input {...register('email')} placeholder={'Email Address'} />
       <p>{errors.email?.message}</p>
 
-      <input
-        {...register('password')}
-        placeholder={'Password'}
-        type='text'
-        onChange={(e) => {
-          checkPassword(e.target.value);
-        }}
-      />
+      <input {...register('password')} placeholder={'Password'} type='text' />
       <p>{errors.password?.message}</p>
 
       <input
         {...register('validatePassword')}
         placeholder='Validate Password'
         type='text'
-        onChange={(e) => {
-          checkPassValidator(e.target.value);
-        }}
       />
       <p>{errors.validatePassword?.message}</p>
-      {submit ? (
-        <Button type='submit' children={'Submit'} className={'btn'} />
-      ) : (
-        <></>
-      )}
+      <Button type='submit' children={'Submit'} className={'btn'} />
       <p>
         Already registered? <Link to='/login'>Click here</Link>
       </p>

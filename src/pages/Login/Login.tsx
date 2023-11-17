@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { InputsType } from './type';
 import { Button } from '@/components/Button';
+import { InputsType } from '@/types';
 
 export const Login = () => {
   const {

@@ -1,7 +1,8 @@
+import { LocationDataType } from '@/types';
 import { useEffect, useState } from 'react';
 
 export const useGeoLoc = () => {
-  const [locationData, setLocationData] = useState<object>({});
+  const [locationData, setLocationData] = useState<LocationDataType>();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const options = {

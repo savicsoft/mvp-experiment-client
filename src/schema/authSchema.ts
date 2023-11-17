@@ -4,27 +4,35 @@ import { signUpType } from './type';
 
 //Currently setup schema for signup
 
-export const signUpSchema: ZodSchema<signUpType> = z.object({
-  firstName: z
-    .string()
-    .min(3)
-    .max(15)
-    .regex(/^[/^[A-Za-zÀ-ÖØ-öø-ÿ -']+$/i),
-  lastName: z
-    .string()
-    .min(3)
-    .max(15)
-    .regex(/^[/^[A-Za-zÀ-ÖØ-öø-ÿ -']+$/i),
-  email: z
-    .string()
-    .email()
-    .regex(/^\S+@\S+\.\S+$/),
-  password: z
-    .string()
-    .min(8)
-    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*"'])(?=.*\d).+$/),
-  validatePassword: z.string(),
-});
+export const signUpSchema: ZodSchema<signUpType> = z
+  .object({
+    firstName: z
+      .string()
+      .min(3)
+      .max(15)
+      .regex(/^[/^[A-Za-zÀ-ÖØ-öø-ÿ -']+$/i),
+    lastName: z
+      .string()
+      .min(3)
+      .max(15)
+      .regex(/^[/^[A-Za-zÀ-ÖØ-öø-ÿ -']+$/i),
+    email: z
+      .string()
+      .email()
+      .regex(/^\S+@\S+\.\S+$/),
+    password: z
+      .string()
+      .min(8)
+      .regex(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*"'])(?=.*\d).+$/,
+        'Something',
+      ),
+    validatePassword: z.string(),
+  })
+  .refine((data) => data.password === data.validatePassword, {
+    message: 'Passwords do not match',
+    path: ['validatePassword'],
+  });
 
 //Possible use of schema in the future
 

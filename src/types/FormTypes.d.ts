@@ -6,8 +6,3 @@ export type InputsType = {
   email: string;
   validatePassword: string;
 };
-
-export type LocationDataType = {
-  latitude: number;
-  longitude: number;
-};
