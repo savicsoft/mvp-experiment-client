@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom';
 import { useGeoLoc } from '@/hooks';
 
 export const GuestView = () => {
@@ -6,6 +7,7 @@ export const GuestView = () => {
   return locationData ? (
     <div>
       <div className='text'>GuestView</div>
+      <Outlet />
       <div className='location'>{`Latitude: ${locationData.latitude}`}</div>
       <div className='location'>{`Longitude: ${locationData.longitude}`}</div>
     </div>
