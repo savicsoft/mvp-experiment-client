@@ -19,7 +19,7 @@ export const Login = () => {
       <div className='container'>
         <div className='midContainer'>
           <div className='leftSide'>
-            <h1>Sign In</h1>
+            <h1 style={{ fontWeight: '700', fontSize: '48px' }}>Sign In</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className='inputDiv'>
                 <img
@@ -56,7 +56,7 @@ export const Login = () => {
             <p>
               This site is protected by reCAPTCHA and the Google
               <a href='placeholder'>Privacy Policy</a>
-              and <a href='placeholder'>Terms of Service</a> apply.
+              and<a href='placeholder'>Terms of Service</a>apply.
             </p>
             <div className='createAcc'>
               <p>Create an account</p>
