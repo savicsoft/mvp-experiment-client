@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  padding: auto;
+  font-family: Roboto Condensed;
+}
+
+a {
+  width: 100%;
+  font-weight: 600;
+  margin: 10px 0px;
+}
+
+p {
+  font-weight: 622;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.midContainer {
+  width: 1500px;
+  max-width: 90%;
+  display: flex;
+  align-items: center;
+  gap: 4vw;
+}
+
+.leftSide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 800px;
+  max-width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.btn {
+  width: 100%;
+  background-color: #f52b38;
+  border-color: #f52b38;
+  color: white;
+  border-style: solid;
+  padding: 15px 20px;
+  font-family: jomhuria;
+  font-size: 25px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: white;
+  color: #f52b38;
+  border-color: #f52b38;
+  border-width: 2px;
+}
+
+input {
+  width: 95%;
+  max-width: 800px;
+  border-radius: 5px;
+  border-width: 1px;
+  padding: 15px 20px;
+  text-indent: 20px;
+}
+
+.inputDiv {
+  width: 100%;
+}
+
+.inputIcon {
+  position: absolute;
+  transform: translateY(90%) translateX(50%);
+}
+
+.createAcc {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 1200px) {
+  .midContainer {
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+  }
+} /*# sourceMappingURL=styles.css.map */
