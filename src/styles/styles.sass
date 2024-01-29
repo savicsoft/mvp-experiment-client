@@ -1,4 +1,9 @@
 $redButton: #F52B38
+$redButtonBackground: #FFDAD5
+$surfaceBackground: #FFF8F7
+
+$borderRadius: 16px
+
 $breakpoint-small: 600px
 $breakpoint-medium: 900px
 $breakpoint-large: 1200px
@@ -82,6 +87,63 @@ input
   width: 100%
   display: flex
   justify-content: space-between
+
+
+.header
+  display: flex
+  justify-content: space-between
+
+  padding-block: 20px
+  padding-inline: 14px
+
+
+.header-btn-group
+  display: flex
+  position: relative
+  gap: 20px
+
+.btn-header
+  background:$redButtonBackground
+  display: flex
+  gap:10px
+  justify-content: space-between
+  align-items: center
+  border-radius: $borderRadius
+  font-family: jomhuria
+  font-size: 30px
+  padding: 10px
+  border: none
+  cursor: pointer
+
+.btn-header-active
+  flex-direction:column
+
+.btn-header-lg
+  gap: 40px
+
+
+.btn-header-lg img
+  padding-right:16px
+
+.header-links
+  display: flex
+  flex-direction: column
+  position: absolute
+  left:-100px
+  top:50px
+
+.header-links a
+  background: $surfaceBackground
+  margin:0
+  padding-block: 28px
+  padding-left: 15px
+  width: 376px
+
+.header-links a:hover
+  background:$redButtonBackground
+
+.activeLink
+  transform: rotate(90deg)
 
 //Media queries
 
