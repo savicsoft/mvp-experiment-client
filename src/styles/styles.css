@@ -96,42 +96,71 @@ input {
   justify-content: space-between;
   padding-block: 20px;
   padding-inline: 14px;
+  font-family: jomhuria;
 }
 
 .header-btn-group {
   display: flex;
   position: relative;
+  gap: 10px;
+}
+
+.header-search {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
   gap: 20px;
+  background: #ffdad5;
+  border-radius: 16px;
+  pointer: cursor;
+}
+
+.header-search input {
+  outline: none;
+  background: none;
+  border: none;
+  text-indent: 0px;
+  font-weight: bolder;
+}
+
+.header-search input::-moz-placeholder {
+  color: #000;
+}
+
+.header-search input::placeholder {
+  color: #000;
+}
+
+.header-search img {
+  width: 24px;
+  height: 24px;
 }
 
 .btn-header {
   background: #ffdad5;
   display: flex;
-  gap: 10px;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
+  font-weight: bolder;
   border-radius: 16px;
-  font-family: jomhuria;
-  font-size: 30px;
   padding: 10px;
   border: none;
   cursor: pointer;
+  outline: none;
 }
 
 .btn-header-lg {
   gap: 40px;
 }
 
-.btn-header-lg img {
-  padding-right: 16px;
-}
-
 .header-links {
   display: flex;
   flex-direction: column;
   position: absolute;
-  left: -100px;
-  top: 50px;
+  right: 0px;
+  top: 60px;
 }
 
 .header-links a {

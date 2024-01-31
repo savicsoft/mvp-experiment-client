@@ -8,6 +8,10 @@ const Header = () => {
     <header className='header'>
       <img src='/images/Name.png' alt='logo' />
       <div className='header-btn-group'>
+        <div className='header-search'>
+          <input type='text' placeholder='Search' />
+          <img src='images/search.png' alt='search' />
+        </div>
         <Button
           onClick={handlePublishARide}
           className={'btn-header btn-header-lg'}
@@ -16,20 +20,16 @@ const Header = () => {
           <img src='images/plus.png' alt='plus' />
         </Button>
         <Button
-          className={isActive ? 'btn-header-active' : 'btn-header '}
+          className={isActive ? 'btn-header-active btn-header ' : 'btn-header '}
           onClick={handleActive}
         >
-          <img src='.\public\images\person.png' alt='person' />
+          <img src='images\person.png' alt='person' />
           {isActive ? (
             <>
-              <img
-                src='.\public\images\down.png'
-                alt='down'
-                className={'activeLink'}
-              />
+              <img src='images/down.png' alt='down' className={'activeLink'} />
             </>
           ) : (
-            <img src='.\public\images\down.png' alt='down' />
+            <img src='images/down.png' alt='down' />
           )}
         </Button>
         {isActive ? (

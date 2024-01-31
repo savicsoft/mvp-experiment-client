@@ -1,8 +1,10 @@
 $redButton: #F52B38
 $redButtonBackground: #FFDAD5
 $surfaceBackground: #FFF8F7
+$black: #000
 
 $borderRadius: 16px
+$spacing: 10px
 
 $breakpoint-small: 600px
 $breakpoint-medium: 900px
@@ -92,28 +94,51 @@ input
 .header
   display: flex
   justify-content: space-between
-
   padding-block: 20px
   padding-inline: 14px
-
+  font-family: jomhuria
 
 .header-btn-group
   display: flex
   position: relative
-  gap: 20px
+  gap: $spacing
+
+.header-search
+  display: flex
+  justify-content: space-between
+  padding: $spacing
+  align-items: center
+  gap:20px
+  background:$redButtonBackground
+  border-radius: $borderRadius
+  pointer: cursor
+
+.header-search input
+  outline: none
+  background: none
+  border: none
+  text-indent: 0px
+  font-weight: bolder
+
+.header-search input::placeholder
+  color: $black
+
+.header-search img
+  width: 24px
+  height: 24px
 
 .btn-header
   background:$redButtonBackground
   display: flex
-  gap:10px
   justify-content: space-between
   align-items: center
+  gap: $spacing
+  font-weight: bolder
   border-radius: $borderRadius
-  font-family: jomhuria
-  font-size: 30px
-  padding: 10px
+  padding: $spacing
   border: none
   cursor: pointer
+  outline: none
 
 .btn-header-active
   flex-direction:column
@@ -121,16 +146,12 @@ input
 .btn-header-lg
   gap: 40px
 
-
-.btn-header-lg img
-  padding-right:16px
-
 .header-links
   display: flex
   flex-direction: column
   position: absolute
-  left:-100px
-  top:50px
+  right: 0px
+  top: 60px
 
 .header-links a
   background: $surfaceBackground
@@ -144,6 +165,7 @@ input
 
 .activeLink
   transform: rotate(90deg)
+
 
 //Media queries
 
