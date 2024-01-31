@@ -1,7 +1,14 @@
-$redButton: #F52B38
-$redButtonBackground: #FFDAD5
-$surfaceBackground: #FFF8F7
-$black: #000
+$primary: #F52B38
+$primaryHover: #BA2D28,
+$primaryContainer: #FFDAD5
+$secondary: #775652
+$surface: #FFF8F7
+$onPrimaryContainer: #3B0907
+$onSurface: '#231918'
+$outline: #857371,
+$base: #000
+
+
 
 $borderRadius: 16px
 $spacing: 10px
@@ -19,7 +26,7 @@ a
   width: 100%
   font-weight: 600
   margin: 10px 3px
-  color: black
+  color: $base
 
 p
   font-weight: 622
@@ -54,8 +61,8 @@ form
 
 .btn
   width: 100%
-  background-color: $redButton
-  border-color: $redButton
+  background-color: $primary
+  border-color: $primary
   color: white
   border-style: solid
   padding: 15px 20px
@@ -66,8 +73,8 @@ form
 
 .btn:hover
   background-color: white
-  color: $redButton
-  border-color: $redButton
+  color: $primary
+  border-color: $primary
   border-width: 2px
 
 input
@@ -109,11 +116,12 @@ input
   padding: $spacing
   align-items: center
   gap:20px
-  background:$redButtonBackground
+  background:$primaryContainer
   border-radius: $borderRadius
   pointer: cursor
 
 .header-search input
+  padding:$spacing
   outline: none
   background: none
   border: none
@@ -121,14 +129,14 @@ input
   font-weight: bolder
 
 .header-search input::placeholder
-  color: $black
-
+  color: $base
+  
 .header-search img
   width: 24px
   height: 24px
 
 .btn-header
-  background:$redButtonBackground
+  background:$primaryContainer
   display: flex
   justify-content: space-between
   align-items: center
@@ -154,14 +162,14 @@ input
   top: 60px
 
 .header-links a
-  background: $surfaceBackground
+  background: $surface
   margin:0
   padding-block: 28px
   padding-left: 15px
   width: 376px
 
 .header-links a:hover
-  background:$redButtonBackground
+  background:$primaryContainer
 
 .activeLink
   transform: rotate(90deg)
