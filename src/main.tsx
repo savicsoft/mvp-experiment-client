@@ -1,6 +1,8 @@
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import './styles.css';
 import {
   Dashboard,
@@ -8,10 +10,9 @@ import {
   GuestView,
   Login,
   NotFound,
+  Profile,
   SignUp,
-} from './pages';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+} from '@/pages';
 
 // routing
 const routing = createBrowserRouter([
@@ -22,6 +23,10 @@ const routing = createBrowserRouter([
       {
         path: '/dashboard',
         element: <Dashboard />,
+      },
+      {
+        path: '/profile',
+        element: <Profile />,
       },
     ],
   },
