@@ -27,6 +27,7 @@ const Header = () => {
           {isActive ? (
             <>
               <img src='images/down.png' alt='down' className={'rotate-90'} />
+              <img src='images/down.png' alt='down' className={'rotate-90'} />
             </>
           ) : (
             <img src='images/down.png' alt='down' />
