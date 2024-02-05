@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: auto;
+  font-family: Roboto Condensed;
+}
+
+a {
+  font-weight: 600;
+  color: black;
+}
+
+p {
+  font-weight: 600;
+}
+
+.createAcc {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 1200px) {
+  .midContainer {
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+  }
+} /*# sourceMappingURL=styles.css.map */
