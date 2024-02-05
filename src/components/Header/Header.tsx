@@ -5,39 +5,47 @@ import { useHeader } from './useHeader';
 const Header = () => {
   const { isActive, handleActive, handlePublishARide } = useHeader();
   return (
-    <header className='header'>
+    <header className='flex justify-between px-5 py-4 text-3xl '>
       <img src='/images/Name.png' alt='logo' />
-      <div className='header-btn-group'>
-        <div className='header-search'>
-          <input type='text' placeholder='Search' />
-          <img src='images/search.png' alt='search' />
-        </div>
+      <div className='flex gap-5 relative'>
         <Button
           onClick={handlePublishARide}
-          className={'btn-header btn-header-lg'}
+          className={
+            'flex justify-center items-center gap-10 font-bold cursor-pointer p-3 outline-none rounded-2xl bg-[#FFDAD5] btn-header-lg'
+          }
         >
           Publish a ride
           <img src='images/plus.png' alt='plus' />
         </Button>
         <Button
-          className={isActive ? 'btn-header-active btn-header ' : 'btn-header '}
+          className={
+            isActive
+              ? 'flex  justify-center items-center gap-3 font-bold cursor-pointer p-3 outline-none rounded-2xl bg-[#FFDAD5] '
+              : 'flex justify-center items-center gap-3 font-bold cursor-pointer p-3 outline-none rounded-2xl bg-[#FFDAD5]'
+          }
           onClick={handleActive}
         >
           <img src='images\person.png' alt='person' />
           {isActive ? (
             <>
-              <img src='images/down.png' alt='down' className={'activeLink'} />
+              <img src='images/down.png' alt='down' className={'rotate-90'} />
             </>
           ) : (
             <img src='images/down.png' alt='down' />
           )}
         </Button>
         {isActive ? (
-          <div className='header-links'>
-            <Link className='header-link' to='/login'>
+          <div className='flex flex-col absolute right-0 top-16'>
+            <Link
+              className='m-0 pl-4 py-6 bg-[#FFF8F7] w-96 hover:bg-[#FFDAD5]'
+              to='/login'
+            >
               Sign In
             </Link>
-            <Link className='header-link' to='/signup'>
+            <Link
+              className='m-0 pl-4 py-6 rounded-bl-2xl bg-[#FFF8F7] w-96 hover:bg-[#FFDAD5]'
+              to='/signup'
+            >
               Sign Up
             </Link>
           </div>
