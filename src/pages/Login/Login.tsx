@@ -2,6 +2,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/Button';
 import { InputsType } from '@/types';
+import Header from '@/components/Header/Header';
 
 export const Login = () => {
   const {
@@ -13,9 +14,7 @@ export const Login = () => {
 
   return (
     <>
-      <div className='header' style={{ textAlign: 'center' }}>
-        <h1>Here will go the header component</h1>
-      </div>
+      <Header />
       <div className='flex justify-center'>
         <div className='flex w-[1500px] gap-[4vw] max-w-[90%] midContainer'>
           <div className='flex justify-center items-center flex-col w-[800px] max-w-[100%]'>
