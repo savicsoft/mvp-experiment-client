@@ -26,17 +26,17 @@ export const Profile = () => {
               </div>
             </div>
           )}
-          <div className='absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-3/4 w-max bg-rose-150 hover:bg-rose-200 transition-colors rounded-xl px-4 py-1 flex gap-3 items-center text-lgfont-jomhuria font-bold'>
+          <div className='absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-3/4 w-max bg-rose-150 hover:bg-rose-200 transition-colors rounded-xl px-4 flex gap-3 items-center font-jomhuria  text-3xl'>
             {!user?.image ? (
               <Fragment>
-                <span>Add Photo</span>
+                <span className='pt-1'>Add Photo</span>
                 <span>
                   <RoundPlusIcon />
                 </span>
               </Fragment>
             ) : (
               <Fragment>
-                <span>Edit</span>
+                <span className='pt-1'>Edit</span>
                 <span>
                   <PencilIcon />
                 </span>
