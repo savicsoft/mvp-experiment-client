@@ -23,6 +23,9 @@ export default {
         slate: {
           650: '#545F71',
         },
+        red: {
+          550: '#F52B38',
+        },
       },
       height: {
         18: '4.5rem',

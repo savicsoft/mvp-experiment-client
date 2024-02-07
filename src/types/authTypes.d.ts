@@ -8,6 +8,7 @@ export type UserType = {
   country?: string;
   gender?: string;
   about?: string;
+  rating?: string;
   car?: {
     registration_number: string;
     brand: string;

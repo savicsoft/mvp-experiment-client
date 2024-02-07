@@ -1,19 +1,18 @@
-import { RoundPlusIcon } from '@/Icons';
+import { RoundPlusIcon, PencilIcon, RatingStarIcon } from '@/Icons';
 import { useProfile } from './useProfile';
-import { PencilIcon } from '@/Icons/PencilIcon';
 import { Fragment } from 'react';
 
 export const Profile = () => {
   const { user, completionLevel } = useProfile();
   return (
-    <div className='mx-5 tracking-tighter mb-40'>
+    <div className='mx-5  mb-40'>
       <div className='w-full h-full mx-auto rounded relative mb-40'>
         <img
           src='/images/profile-banner.png'
           alt='profile banner'
           className='w-full h-full object-cover'
         />
-        <div className='absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 rounded-full border-black border'>
+        <div className='absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 rounded-full'>
           {user?.image ? (
             <img
               src={user.image}
@@ -21,9 +20,13 @@ export const Profile = () => {
               className='z-10 h-48 w-48 object-cover object-center overflow-hidden rounded-full'
             />
           ) : (
-            <div className='z-10 h-48 w-48 bg-white overflow-hidden rounded-full' />
+            <div className='z-10 h-48 w-48 bg-rose-150 overflow-hidden rounded-full relative'>
+              <div className='absolute h-12 w-12 rounded-full border-2 border-red-550 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 capitalize font-bold text-xl text-red-550 flex justify-center items-center'>
+                {user?.name[0]}
+              </div>
+            </div>
           )}
-          <div className='absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-3/4 w-max bg-rose-150 hover:bg-rose-200 transition-colors rounded-xl px-4 py-1 flex gap-3 items-center font-jomhuria font-bold'>
+          <div className='absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-3/4 w-max bg-rose-150 hover:bg-rose-200 transition-colors rounded-xl px-4 py-1 flex gap-3 items-center text-lgfont-jomhuria font-bold'>
             {!user?.image ? (
               <Fragment>
                 <span>Add Photo</span>
@@ -46,6 +49,12 @@ export const Profile = () => {
         <h1 className='font-bold text-4xl capitalize mb-6 text-center'>
           {user?.name} {user?.surname}
         </h1>
+
+        {user?.rating && (
+          <h3 className='flex justify-center gap-3 mb-3'>
+            <RatingStarIcon /> {user.rating}/5
+          </h3>
+        )}
 
         <h3 className='text-stone-750 mb-8 text-center'>{user?.email}</h3>
 
@@ -85,8 +94,8 @@ export const Profile = () => {
                 Gender: {user.gender}
               </h3>
             )}
-            <div className='w-max bg-rose-150 hover:bg-rose-200 transition-colors rounded-xl px-4 py-1 flex gap-8 items-center font-jomhuria font-bold'>
-              <span>Edit profile</span>
+            <div className='text-3xl w-max bg-rose-150 hover:bg-rose-200 transition-colors rounded-xl px-3 flex gap-8 items-center font-jomhuria'>
+              <span className='pt-1'>Edit profile</span>
               <span>
                 <RoundPlusIcon />
               </span>
@@ -124,11 +133,22 @@ export const Profile = () => {
             Add information about your vehicle to be able to publish your rides{' '}
           </h3>
 
-          <div className='w-max bg-rose-150 hover:bg-rose-200 transition-colors rounded-xl px-4 py-1 flex gap-10 items-center font-jomhuria font-bold mb-20'>
-            <span>Add info</span>
-            <span>
-              <RoundPlusIcon />
-            </span>
+          <div className='text-3xl w-max bg-rose-150 hover:bg-rose-200 transition-colors rounded-xl px-3 flex gap-10 items-center font-jomhuria mb-20'>
+            {!user?.car ? (
+              <Fragment>
+                <span className='pt-1'>Add info</span>
+                <span>
+                  <RoundPlusIcon />
+                </span>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <span className='pt-1'>update info</span>
+                <span>
+                  <PencilIcon />
+                </span>
+              </Fragment>
+            )}
           </div>
 
           <button className='underline'>Log out</button>
