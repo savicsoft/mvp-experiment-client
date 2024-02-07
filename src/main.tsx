@@ -14,8 +14,6 @@ import {
   SignUp,
 } from '@/pages';
 
-
-// routing
 const routing = createBrowserRouter([
   {
     path: '/',
@@ -50,8 +48,6 @@ const routing = createBrowserRouter([
     element: <NotFound />,
   },
 ]);
-
-//render
 
 const queryClient = new QueryClient();
 
