@@ -4,10 +4,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { signUpSchema } from '@/schema';
 import { SingInUpType } from '@/types';
 import { Button, Header, TwinElements, TwinPassInput } from '@/components';
+import { useSignUp } from './useSignUp';
 
 export const SignUp = () => {
   const form = useForm<SingInUpType>({
     mode: 'onChange',
+
     resolver: zodResolver(signUpSchema),
   });
 
@@ -67,7 +69,11 @@ export const SignUp = () => {
               </div>
               <p>{errors.email?.message as string}</p>
               <TwinPassInput />
-              <input type='checkbox' className='size-5 mb-5 mr-5' />
+              <input
+                type='checkbox'
+                className='size-5 mb-5 mr-5'
+                onChange={() => setCheckbox(!checkbox)}
+              />
               <label className='indent-5'>
                 You agree to our friendly{' '}
                 <span>
