@@ -14,7 +14,6 @@ export const SignUp = () => {
   const {
     register,
     handleSubmit,
-
     formState: { errors },
   } = form;
 

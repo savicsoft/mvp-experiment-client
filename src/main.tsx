@@ -12,6 +12,8 @@ import {
   NotFound,
   Profile,
   SignUp,
+  ForgotPassword,
+  ResetPassword,
 } from '@/pages';
 
 const routing = createBrowserRouter([
@@ -40,6 +42,14 @@ const routing = createBrowserRouter([
       {
         path: '/signup',
         element: <SignUp />,
+      },
+      {
+        path: '/forgotpassword',
+        element: <ForgotPassword />,
+      },
+      {
+        path: '/resetpassword',
+        element: <ResetPassword />,
       },
     ],
   },
