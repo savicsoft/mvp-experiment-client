@@ -6,3 +6,4 @@ export * from './SignUp';
 export * from './DefaultView';
 export * from './ForgotPassword';
 export * from './ResetPassword';
+export * from './Profile';
