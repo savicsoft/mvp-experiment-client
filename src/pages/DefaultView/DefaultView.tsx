@@ -1,10 +1,11 @@
-import { Dashboard } from '@/pages';
+import { Header } from '@/components';
+import { Outlet } from 'react-router-dom';
 
 export const DefaultView = () => {
   return (
     <div>
-      <div className='text'>DefaultView</div>
-      <Dashboard data={undefined} />
+      <Header />
+      <Outlet />
     </div>
   );
 };

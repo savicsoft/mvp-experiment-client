@@ -2,7 +2,7 @@ import { Button } from '@/components';
 import { Link } from 'react-router-dom';
 import { useHeader } from './useHeader';
 
-const Header = () => {
+export const Header = () => {
   const { isActive, handleActive, handlePublishARide } = useHeader();
   return (
     <header className='flex justify-between px-5 py-4 text-3xl '>
@@ -55,5 +55,3 @@ const Header = () => {
     </header>
   );
 };
-
-export default Header;

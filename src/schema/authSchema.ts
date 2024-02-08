@@ -46,7 +46,7 @@ export const signUpSchema: ZodSchema<signUpType> = z
       .min(8)
       .regex(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*"'])(?=.*\d).+$/,
-        'Something',
+        'Password needs at least one: UPPER/lower case letter, special character, number',
       ),
     validatePassword: z.string(),
   })

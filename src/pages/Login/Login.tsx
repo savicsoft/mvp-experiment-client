@@ -1,8 +1,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { Button } from '@/components/Button';
+import { Button, Header } from '@/components';
 import { InputsType } from '@/types';
-import Header from '@/components/Header/Header';
 import { useRevealPass } from '@/hooks';
 
 export const Login = () => {
