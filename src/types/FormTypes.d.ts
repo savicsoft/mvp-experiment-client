@@ -10,3 +10,8 @@ export type InputsType = {
 export type forgotPassType = {
   email: string;
 };
+
+export type resetPassType = {
+  password: string;
+  validatePassword: string;
+};

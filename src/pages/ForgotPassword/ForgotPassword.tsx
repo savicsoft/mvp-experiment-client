@@ -1,13 +1,13 @@
 import { Button } from '@/components';
 import Header from '@/components/Header/Header';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { InputsType } from '@/types';
+import { forgotPassType } from '@/types';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { forgotPassSchema } from '@/schema';
 import { useNavigate } from 'react-router-dom';
 
 export const ForgotPassword = () => {
-  const form = useForm<InputsType>({
+  const form = useForm<forgotPassType>({
     mode: 'onChange',
     resolver: zodResolver(forgotPassSchema),
   });
@@ -20,7 +20,8 @@ export const ForgotPassword = () => {
 
   const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<InputsType> = () => navigate('/resetpassword');
+  const onSubmit: SubmitHandler<forgotPassType> = () =>
+    navigate('/resetpassword');
 
   return (
     <>
