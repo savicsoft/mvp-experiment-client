@@ -8,10 +8,11 @@ import {
   Login,
   NotFound,
   SignUp,
+  ForgotPassword,
+  ResetPassword,
 } from './pages';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 
 // routing
 const routing = createBrowserRouter([
@@ -40,6 +41,10 @@ const routing = createBrowserRouter([
       {
         path: '/forgotpassword',
         element: <ForgotPassword />,
+      },
+      {
+        path: '/resetpassword',
+        element: <ResetPassword />,
       },
     ],
   },

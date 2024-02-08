@@ -9,7 +9,8 @@ export const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<InputsType>();
+  } = useForm<InputsType>({});
+
   const onSubmit: SubmitHandler<InputsType> = (data) => console.log(data);
 
   return (
@@ -61,7 +62,7 @@ export const Login = () => {
               <div className='w-full'>
                 <Link
                   className=' float-left hover:underline mb-3 font-semibold'
-                  to=''
+                  to='/forgotpassword'
                 >
                   Forgot Your Password?
                 </Link>

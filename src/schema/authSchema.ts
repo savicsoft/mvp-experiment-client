@@ -1,8 +1,16 @@
 import { ZodSchema, z } from 'zod';
 import { MAX_FILE_SIZE, ACCEPTED_IMAGE_TYPES } from '@/config';
 import { signUpType } from './type';
+import { forgotPassType } from '@/types';
 
 //Currently setup schema for signup
+
+export const forgotPassSchema: ZodSchema<forgotPassType> = z.object({
+  email: z
+    .string()
+    .email()
+    .regex(/^\S+@\S+\.\S+$/),
+});
 
 export const signUpSchema: ZodSchema<signUpType> = z
   .object({
