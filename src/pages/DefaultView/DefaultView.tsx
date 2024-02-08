@@ -1,10 +1,10 @@
-import { Dashboard } from '@/pages';
+import { Outlet } from 'react-router-dom';
 
 export const DefaultView = () => {
   return (
     <div>
-      <div className='text'>DefaultView</div>
-      <Dashboard data={undefined} />
+      <div className='text mb-10'>put header here</div>
+      <Outlet />
     </div>
   );
 };
