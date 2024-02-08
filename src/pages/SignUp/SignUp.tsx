@@ -50,7 +50,6 @@ export const SignUp = () => {
                 }
                 secondElement={
                   <>
-                    {' '}
                     <input
                       {...register('lastName')}
                       placeholder={'Last Name'}
@@ -70,17 +69,19 @@ export const SignUp = () => {
               </div>
               <p>{errors.email?.message}</p>
               <TwinPassInput />
-              <input
-                type='checkbox'
-                className='size-5 mb-5 mr-5'
-                onChange={() => setCheckbox(!checkbox)}
-              />
-              <label className='indent-5'>
-                You agree to our friendly{' '}
-                <span>
-                  <a href='/'>privacy policy</a>
-                </span>
-              </label>
+              <div className='checkbox flex items-center mb-5'>
+                <input
+                  type='checkbox'
+                  className='mr-3 size-5'
+                  onChange={() => setCheckbox(!checkbox)}
+                />
+                <label className='indent-5'>
+                  You agree to our friendly{' '}
+                  <span className='hover:underline'>
+                    <a href='/'>privacy policy</a>
+                  </span>
+                </label>
+              </div>
               <Button
                 type='submit'
                 children={'Create Account'}
@@ -92,7 +93,12 @@ export const SignUp = () => {
                   Sign in
                 </Link>
               </p>
-              <p>or</p>
+              <div className='lines-container flex justify-evenly items-center mb-3'>
+                <div className='line h-[1px] bg-black flex-1'></div>
+                <p className='mx-3'>or</p>
+                <div className='line h-[1px] bg-black flex-1'></div>
+              </div>
+
               <TwinElements
                 firstElement={
                   <>
