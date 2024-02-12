@@ -1,9 +1,9 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { Button } from '@/components/Button';
-import { InputsType } from '@/types';
+import { Button } from '@/components';
 import Header from '@/components/Header/Header';
 import { useRevealPass } from '@/hooks';
+import { signUpType } from '@/schema';
 
 export const Login = () => {
   const { revPass, setRevPass } = useRevealPass();
@@ -12,9 +12,9 @@ export const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<InputsType>({});
+  } = useForm<signUpType>({});
 
-  const onSubmit: SubmitHandler<InputsType> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<signUpType> = (data) => console.log(data);
 
   return (
     <>

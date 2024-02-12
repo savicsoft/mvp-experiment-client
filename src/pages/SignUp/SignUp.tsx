@@ -2,11 +2,11 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { signUpSchema } from '@/schema';
-import { InputsType } from '@/types';
+import { SingInUpType } from '@/types';
 import { Button } from '@/components';
 
 export const SignUp = () => {
-  const form = useForm<InputsType>({
+  const form = useForm<SingInUpType>({
     mode: 'onChange',
     resolver: zodResolver(signUpSchema),
   });
@@ -17,7 +17,7 @@ export const SignUp = () => {
     formState: { errors },
   } = form;
 
-  const onSubmit: SubmitHandler<InputsType> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<SingInUpType> = (data) => console.log(data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

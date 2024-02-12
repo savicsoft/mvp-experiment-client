@@ -29,10 +29,12 @@ export default {
       },
       height: {
         18: '4.5rem',
+        166: '41.5rem',
       },
       width: {
         18: '4.5rem',
         172: '43rem',
+        119: '29.5rem',
       },
     },
   },
