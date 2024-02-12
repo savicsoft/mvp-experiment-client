@@ -3,3 +3,6 @@ export * from './Button';
 export * from './UserProfile';
 export * from './Input';
 export * from './Modal';
+export * from './Header';
+export * from './TwinPassInput';
+export * from './TwinElements';

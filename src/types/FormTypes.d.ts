@@ -5,6 +5,7 @@ export type SingInUpType = {
   phoneNumber: string;
   email: string;
   validatePassword: string;
+  privacyPolicy: Boolean;
 };
 
 export type forgotPassType = {

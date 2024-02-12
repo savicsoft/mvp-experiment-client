@@ -1,5 +1,4 @@
-import { Button } from '@/components';
-import Header from '@/components/Header/Header';
+import { Button, Header } from '@/components';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { forgotPassType } from '@/types';
 import { SubmitHandler, useForm } from 'react-hook-form';

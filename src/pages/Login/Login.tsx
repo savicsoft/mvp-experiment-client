@@ -1,7 +1,6 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { Button } from '@/components';
-import Header from '@/components/Header/Header';
+import { Button, Header } from '@/components';
 import { useRevealPass } from '@/hooks';
 import { signUpType } from '@/schema';
 
