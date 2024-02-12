@@ -1,6 +1,7 @@
 import { Button } from '@/components';
 import { Link } from 'react-router-dom';
 import { useHeader } from './useHeader';
+import { DownIcon, PersonIcon, RoundPlusIcon } from '@/Icons';
 
 export const Header = () => {
   const { isActive, handleActive, handlePublishARide } = useHeader();
@@ -15,7 +16,9 @@ export const Header = () => {
           }
         >
           Publish a ride
-          <img src='images/plus.png' alt='plus' />
+          <span>
+            <RoundPlusIcon />
+          </span>
         </Button>
         <Button
           className={
@@ -23,18 +26,17 @@ export const Header = () => {
           }
           onClick={handleActive}
         >
-          <img src='images\person.png' alt='person' />
+          <PersonIcon />
           {isActive ? (
             <>
-              <img src='images/down.png' alt='down' className={'rotate-90'} />
-              <img src='images/down.png' alt='down' className={'rotate-90'} />
+              <DownIcon className='rotate-90' />
             </>
           ) : (
-            <img src='images/down.png' alt='down' />
+            <DownIcon />
           )}
         </Button>
         {isActive ? (
-          <div className='font-[Roboto_Condensed] flex flex-col absolute right-0 top-16'>
+          <div className='font-[Roboto_Condensed] flex flex-col absolute right-0 top-16 z-10'>
             <Link
               className='m-0 pl-4 py-6 bg-[#FFF8F7] w-96 hover:bg-[#FFDAD5]'
               to='/login'
