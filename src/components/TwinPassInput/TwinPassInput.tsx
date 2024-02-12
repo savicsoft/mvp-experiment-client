@@ -1,3 +1,4 @@
+import { EyeIcon } from '@/Icons';
 import { useRevealPass } from '@/hooks';
 import { signUpSchema } from '@/schema';
 import { SingInUpType } from '@/types';
@@ -20,11 +21,10 @@ export const TwinPassInput = () => {
   return (
     <div className='input-field flex gap-4 w-full'>
       <div className='new-password flex-1 relative'>
-        <img
-          onClick={() => setRevPass(!revPass)}
-          src={revPass ? `\\images\\eye-open.svg` : `\\images\\eye-close.svg`}
-          alt='eye-icon'
+        <EyeIcon
+          isOpen={revPass}
           className='absolute right-3 top-4'
+          onClick={() => setRevPass(!revPass)}
         />
         <input
           {...register('password')}
@@ -35,11 +35,10 @@ export const TwinPassInput = () => {
         <p>{errors.password?.message}</p>
       </div>
       <div className='conf-password flex-1 relative'>
-        <img
-          onClick={() => setRevPass(!revPass)}
-          src={revPass ? `\\images\\eye-open.svg` : `\\images\\eye-close.svg`}
-          alt='eye-icon'
+        <EyeIcon
+          isOpen={revPass}
           className='absolute right-3 top-4'
+          onClick={() => setRevPass(!revPass)}
         />
         <input
           {...register('validatePassword')}

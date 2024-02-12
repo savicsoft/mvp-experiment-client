@@ -2,7 +2,10 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { Button, Header } from '@/components';
 import { useRevealPass } from '@/hooks';
+
 import { signUpType } from '@/schema';
+
+import { EyeIcon } from '@/Icons';
 
 export const Login = () => {
   const { revPass, setRevPass } = useRevealPass();
@@ -45,12 +48,9 @@ export const Login = () => {
 
               <p>{errors.email?.message}</p>
               <div className='w-full'>
-                <img
+                <EyeIcon
+                  isOpen={revPass}
                   className='absolute translate-y-4 translate-x-2/4'
-                  src={
-                    revPass ? '/images/eye-open.svg' : '/images/eye-close.svg'
-                  }
-                  alt='eye-icon'
                   onClick={() => setRevPass(!revPass)}
                 />
                 <input
