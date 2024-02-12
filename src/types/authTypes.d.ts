@@ -4,7 +4,7 @@ export type UserType = {
   image?: string;
   email: string;
   phone: string;
-  birthdate?: string;
+  birthdate?: dayjs.Dayjs;
   country?: string;
   gender?: string;
   about?: string;

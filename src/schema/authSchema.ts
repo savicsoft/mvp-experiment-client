@@ -136,11 +136,6 @@ export const profileSchema = z.object({
     )
     .refine((data) => data.length === 11, 'Should be 11 digits')
     .optional(),
-  birth_date: z
-    .string()
-    .refine((data) => !!Date.parse(data), {
-      message: 'Date is wrong',
-    })
-    .optional(),
+  birth_date: z.any().optional(),
   gender: z.string().optional(),
 });

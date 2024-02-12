@@ -7,10 +7,10 @@ export const getUser = () => {
     surname: 'surname',
     // image: '/images/profile-banner.png',
     email: 'example@test.com',
-    phone: '+12312345678910',
-    // birthdate: '01/01/1999',
+    phone: '12345678910',
+    birthdate: '01/01/1999',
     rating: '3.5',
-    country: 'country',
+    country: 'uk',
     gender: 'male',
     about: 'about me',
     car: {
