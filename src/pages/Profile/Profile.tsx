@@ -2,7 +2,11 @@ import { RoundPlusIcon, PencilIcon, RatingStarIcon } from '@/Icons';
 import { useProfile } from './useProfile';
 import { Fragment } from 'react';
 import { Input, Modal, Button } from '@/components';
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import {
+  ArrowLeftIcon,
+  DatePicker,
+  LocalizationProvider,
+} from '@mui/x-date-pickers';
 import { Controller } from 'react-hook-form';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
@@ -104,6 +108,12 @@ export const Profile = () => {
                             icon: 'fill-black',
                           },
                         }}
+                        IconComponent={() => (
+                          <div className='relative pointer-events-none'>
+                            <ArrowLeftIcon className='absolute -left-1 -bottom-1.5 rotate-90 -translate-x-full !w-5 !h-5' />
+                            <ArrowLeftIcon className='absolute -left-1 -top-1.5 -rotate-90 -translate-x-full !w-5 !h-5' />
+                          </div>
+                        )}
                         value={value || ''}
                       >
                         <MenuItem value='usa'>USA</MenuItem>
