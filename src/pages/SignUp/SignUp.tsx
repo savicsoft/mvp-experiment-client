@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { signUpSchema } from '@/schema';
 import { SingInUpType } from '@/types';
+
 import { Button, Header, TwinElements, TwinPassInput } from '@/components';
 import { useSignUp } from './useSignUp';
 
 export const SignUp = () => {
+  const { checkbox, setCheckbox } = useSignUp();
   const form = useForm<SingInUpType>({
     mode: 'onChange',
 
@@ -44,6 +46,7 @@ export const SignUp = () => {
                       placeholder={'First Name'}
                       className='text-black w-full rounded-lg border border-black p-4 mb-3'
                     />
+
                     <p>{errors.firstName?.message as string}</p>
                   </>
                 }
@@ -54,6 +57,7 @@ export const SignUp = () => {
                       placeholder={'Last Name'}
                       className='text-black w-full rounded-lg border border-black p-4 mb-3'
                     />
+
                     <p>{errors.lastName?.message as string}</p>
                   </>
                 }
@@ -66,7 +70,9 @@ export const SignUp = () => {
                   className='indent-5 text-black w-full rounded-lg border border-black p-4 mb-3'
                 />
               </div>
+
               <p>{errors.email?.message as string}</p>
+
               <TwinPassInput />
               <div className='checkbox flex items-center mb-5'>
                 <input

@@ -1,8 +1,11 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { Button, Header } from '@/components';
-import { useRevealPass } from '@/hooks';
+
 import { signUpType } from '@/schema';
+
+import { useRevealPass } from '@/hooks';
+
 import { EyeIcon } from '@/Icons';
 
 export const Login = () => {
