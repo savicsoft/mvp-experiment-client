@@ -1,4 +1,4 @@
-export type InputsType = {
+export type SingInUpType = {
   firstName: string;
   lastName: string;
   password: string;

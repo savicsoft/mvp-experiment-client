@@ -1,10 +1,26 @@
+import { profileSchema } from '@/schema';
 import { getUser } from '@/services';
-import { UserType } from '@/types';
+import { ProfileSchemaType, UserType } from '@/types';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 export const useProfile = () => {
-  const queryClient = useQueryClient();
+  const [isEditProfileOpen, setIsEditProfileOpen] = useState(false);
 
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<ProfileSchemaType>({
+    mode: 'onChange',
+    resolver: zodResolver(profileSchema),
+    shouldUnregister: true,
+  });
+
+  const queryClient = useQueryClient();
   const user = queryClient.getQueriesData<UserType>({ queryKey: ['user'] });
 
   const { data: userData } = useQuery({
@@ -25,8 +41,20 @@ export const useProfile = () => {
   if (finalData?.birthdate) completionLevel++;
   if (finalData?.gender) completionLevel++;
 
+  const onSubmit = (data: ProfileSchemaType) => {
+    setIsEditProfileOpen(false);
+    console.log(data);
+  };
+
   return {
     user: finalData,
     completionLevel,
+    isEditProfileOpen,
+    setIsEditProfileOpen,
+    register,
+    errors,
+    handleSubmit,
+    onSubmit,
+    control,
   };
 };

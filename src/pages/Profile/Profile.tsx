@@ -1,11 +1,223 @@
 import { RoundPlusIcon, PencilIcon, RatingStarIcon } from '@/Icons';
 import { useProfile } from './useProfile';
 import { Fragment } from 'react';
+import { Input, Modal, Button } from '@/components';
+import {
+  ArrowLeftIcon,
+  DatePicker,
+  LocalizationProvider,
+} from '@mui/x-date-pickers';
+import { Controller } from 'react-hook-form';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import dayjs from 'dayjs';
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  InputLabel,
+  MenuItem,
+  Radio,
+  RadioGroup,
+  Select,
+} from '@mui/material';
 
 export const Profile = () => {
-  const { user, completionLevel } = useProfile();
+  const {
+    user,
+    completionLevel,
+    isEditProfileOpen,
+    setIsEditProfileOpen,
+    errors,
+    register,
+    handleSubmit,
+    onSubmit,
+    control,
+  } = useProfile();
+
   return (
-    <div className='mx-5  mb-40'>
+    <div className='mx-5 mb-40'>
+      {isEditProfileOpen && (
+        <Modal
+          customCheckForOutsideClick={(classList: DOMTokenList) => {
+            for (let i = 0; i < classList.length; i++) {
+              if (classList[i].includes('Mui')) return false;
+            }
+            return true;
+          }}
+          isOpen={isEditProfileOpen}
+          close={setIsEditProfileOpen.bind(null, false)}
+          mainDivClassname='md:w-1/4 w-1/2 h-auto bg-white rounded-2xl overflow-hidden'
+        >
+          <div className='w-full h-full flex p-8 flex-col'>
+            <h1 className='text-3xl font-bold capitalize mb-10'>
+              Personal Information
+            </h1>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className='flex flex-col gap-7'
+            >
+              <Input
+                errors={errors}
+                register={register('firstname')}
+                name='firstname'
+                placeholder='First name'
+                control={control}
+              />
+              <Input
+                errors={errors}
+                register={register('lastname')}
+                name='lastname'
+                placeholder='Last name'
+                control={control}
+              />
+              <div className='flex gap-4 w-full items-center'>
+                <Controller
+                  name='country'
+                  control={control}
+                  render={({ field: { onChange, value } }) => (
+                    <FormControl className='basis-2/5'>
+                      <InputLabel className='-ml-2 z-10 bg-white !px-1 block !text-black'>
+                        Country
+                      </InputLabel>
+                      <Select
+                        onChange={onChange}
+                        MenuProps={{
+                          disableScrollLock: true,
+                        }}
+                        sx={{
+                          color: 'black',
+                          '.MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'black',
+                            borderWidth: '2px',
+                            borderRadius: '12px',
+                          },
+                          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'black',
+                            borderWidth: '2px',
+                          },
+                          '&:hover .MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'black',
+                            borderWidth: '2px',
+                          },
+                          '.MuiSvgIcon-root ': {
+                            fill: 'black !important',
+                          },
+                        }}
+                        inputProps={{
+                          classes: {
+                            icon: 'fill-black',
+                          },
+                        }}
+                        IconComponent={() => (
+                          <div className='relative pointer-events-none'>
+                            <ArrowLeftIcon className='absolute -left-1 -bottom-1.5 rotate-90 -translate-x-full !w-5 !h-5' />
+                            <ArrowLeftIcon className='absolute -left-1 -top-1.5 -rotate-90 -translate-x-full !w-5 !h-5' />
+                          </div>
+                        )}
+                        value={value || ''}
+                      >
+                        <MenuItem value='usa'>USA</MenuItem>
+                        <MenuItem value='uk'>UK</MenuItem>
+                      </Select>
+                    </FormControl>
+                  )}
+                />
+                <Input
+                  control={control}
+                  errors={errors}
+                  register={register('phone_number')}
+                  name='phone_number'
+                  placeholder='Phone number'
+                />
+              </div>
+              <Controller
+                name='birth_date'
+                control={control}
+                render={({ field: { onChange, value, ref } }) => (
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DatePicker
+                      ref={ref}
+                      onChange={onChange}
+                      value={value ?? dayjs()}
+                      label='Date of birth'
+                      sx={{
+                        '& fieldset': {
+                          border: '2px solid black',
+                          ':hover': '2px solid black',
+                          borderRadius: '12px',
+                        },
+                        '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
+                          {
+                            border: '2px solid black',
+                          },
+                      }}
+                      slotProps={{
+                        textField: {
+                          InputLabelProps: {
+                            className: '!text-black',
+                          },
+                        },
+                      }}
+                    />
+                  </LocalizationProvider>
+                )}
+              />
+
+              <Controller
+                control={control}
+                name='gender'
+                render={({ field: { value, onChange } }) => (
+                  <FormControl>
+                    <FormLabel
+                      id='demo-radio-buttons-group-label'
+                      className='!text-black  !text-xl'
+                    >
+                      Gender
+                    </FormLabel>
+                    <RadioGroup value={value || ''} onChange={onChange} row>
+                      <FormControlLabel
+                        value='male'
+                        control={
+                          <Radio
+                            sx={{
+                              color: 'black',
+                              '&.Mui-checked': {
+                                color: 'black',
+                              },
+                            }}
+                          />
+                        }
+                        label='Male'
+                      />
+                      <FormControlLabel
+                        value='female'
+                        control={
+                          <Radio
+                            sx={{
+                              color: 'black',
+                              '&.Mui-checked': {
+                                color: 'black',
+                              },
+                            }}
+                          />
+                        }
+                        label='Female'
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                )}
+              />
+              <Button
+                type='submit'
+                className='font-jomhuria text-center w-full gap-10 font-light cursor-pointer pt-1 px-4 outline-none rounded-2xl bg-[#F52B38] text-4xl text-white bg-opacity-90 hover:bg-opacity-100 transition-opacity'
+              >
+                Save
+              </Button>
+            </form>
+          </div>
+        </Modal>
+      )}
+
       <div className='w-full h-full mx-auto rounded relative mb-40'>
         <img
           src='/images/profile-banner.png'
@@ -26,7 +238,7 @@ export const Profile = () => {
               </div>
             </div>
           )}
-          <div className='absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-3/4 w-max bg-rose-150 hover:bg-rose-200 transition-colors rounded-xl px-4 flex gap-3 items-center font-jomhuria  text-3xl'>
+          <button className='absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-3/4 w-max bg-rose-150 hover:bg-rose-200 transition-colors rounded-xl px-4 flex gap-3 items-center font-jomhuria  text-3xl'>
             {!user?.image ? (
               <Fragment>
                 <span className='pt-1'>Add Photo</span>
@@ -42,7 +254,7 @@ export const Profile = () => {
                 </span>
               </Fragment>
             )}
-          </div>
+          </button>
         </div>
       </div>
       <div className='mx-auto w-172 mb-10'>
@@ -94,12 +306,15 @@ export const Profile = () => {
                 Gender: {user.gender}
               </h3>
             )}
-            <div className='text-3xl w-max bg-rose-150 hover:bg-rose-200 transition-colors rounded-xl px-3 flex gap-8 items-center font-jomhuria'>
+            <button
+              onClick={setIsEditProfileOpen.bind(null, true)}
+              className='text-3xl w-max bg-rose-150 hover:bg-rose-200 transition-colors rounded-xl px-3 flex gap-8 items-center font-jomhuria'
+            >
               <span className='pt-1'>Edit profile</span>
               <span>
                 <RoundPlusIcon />
               </span>
-            </div>
+            </button>
           </div>
 
           <div
@@ -119,7 +334,7 @@ export const Profile = () => {
           <h1 className='text-3xl font-bold mb-4 capitalize'>About you</h1>
           <textarea
             placeholder='You could add some information you want to share with other members'
-            value={user?.about || ''}
+            // value={user?.about || ''}
             // add onchange from use hook form
             className='w-full h-32 p-4 rounded-lg border-black border-2 focus:outline-none placeholder:text-stone-750 text-lg'
           />
@@ -133,7 +348,7 @@ export const Profile = () => {
             Add information about your vehicle to be able to publish your rides{' '}
           </h3>
 
-          <div className='text-3xl w-max bg-rose-150 hover:bg-rose-200 transition-colors rounded-xl px-3 flex gap-10 items-center font-jomhuria mb-20'>
+          <button className='text-3xl w-max bg-rose-150 hover:bg-rose-200 transition-colors rounded-xl px-3 flex gap-10 items-center font-jomhuria mb-20'>
             {!user?.car ? (
               <Fragment>
                 <span className='pt-1'>Add info</span>
@@ -149,7 +364,7 @@ export const Profile = () => {
                 </span>
               </Fragment>
             )}
-          </div>
+          </button>
 
           <button className='underline'>Log out</button>
         </div>

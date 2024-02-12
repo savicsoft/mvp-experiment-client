@@ -1,8 +1,11 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { Button, Header } from '@/components';
-import { InputsType } from '@/types';
+
+import { signUpType } from '@/schema';
+
 import { useRevealPass } from '@/hooks';
+
 import { EyeIcon } from '@/Icons';
 
 export const Login = () => {
@@ -12,9 +15,9 @@ export const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<InputsType>({});
+  } = useForm<signUpType>({});
 
-  const onSubmit: SubmitHandler<InputsType> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<signUpType> = (data) => console.log(data);
 
   return (
     <>
