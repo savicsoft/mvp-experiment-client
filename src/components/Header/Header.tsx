@@ -11,7 +11,7 @@ export const Header = () => {
         <Button
           onClick={handlePublishARide}
           className={
-            ' font-[Jomhuria] flex justify-center items-center gap-10 font-bold cursor-pointer p-3 outline-none rounded-2xl bg-[#FFDAD5] btn-header-lg'
+            ' font-jomhuria flex justify-center items-center gap-10 font-bold cursor-pointer p-3 outline-none rounded-2xl bg-[#FFDAD5] btn-header-lg'
           }
         >
           Publish a ride
@@ -34,7 +34,7 @@ export const Header = () => {
           )}
         </Button>
         {isActive ? (
-          <div className='font-[Roboto_Condensed] flex flex-col absolute right-0 top-16'>
+          <div className=' font-robotoCondensed flex flex-col absolute right-0 top-16'>
             <Link
               className='m-0 pl-4 py-6 bg-[#FFF8F7] w-96 hover:bg-[#FFDAD5]'
               to='/login'

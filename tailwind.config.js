@@ -6,6 +6,12 @@ export default {
   theme: {
     fontFamily: {
       jomhuria: ['Jomhuria', 'sans-serif', 'ui-sans-serif', 'system-ui'],
+      robotoCondensed: [
+        'Roboto Condensed',
+        'sans-serif',
+        'ui-sans-serif',
+        'system-ui',
+      ],
     },
     extend: {
       backgroundImage: {

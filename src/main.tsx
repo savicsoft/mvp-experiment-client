@@ -15,6 +15,7 @@ import {
   ForgotPassword,
   ResetPassword,
 } from '@/pages';
+import { DisplayRides } from './pages/DisplayRides';
 
 const routing = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const routing = createBrowserRouter([
       {
         path: '/profile',
         element: <Profile />,
+      },
+      {
+        path: '/display-rides',
+        element: <DisplayRides />,
       },
     ],
   },
