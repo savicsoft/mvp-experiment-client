@@ -58,14 +58,14 @@ export const Profile = () => {
             >
               <Input
                 errors={errors}
-                register={register('firstname')}
+                register={register('firstname', { value: user?.name })}
                 name='firstname'
                 placeholder='First name'
                 control={control}
               />
               <Input
                 errors={errors}
-                register={register('lastname')}
+                register={register('lastname', { value: user?.surname })}
                 name='lastname'
                 placeholder='Last name'
                 control={control}
@@ -74,6 +74,7 @@ export const Profile = () => {
                 <Controller
                   name='country'
                   control={control}
+                  defaultValue={user?.country || 'usa'}
                   render={({ field: { onChange, value } }) => (
                     <FormControl className='basis-2/5'>
                       <InputLabel className='-ml-2 z-10 bg-white !px-1 block !text-black'>
@@ -114,7 +115,7 @@ export const Profile = () => {
                             <ArrowLeftIcon className='absolute -left-1 -top-1.5 -rotate-90 -translate-x-full !w-5 !h-5' />
                           </div>
                         )}
-                        value={value || ''}
+                        value={value}
                       >
                         <MenuItem value='usa'>USA</MenuItem>
                         <MenuItem value='uk'>UK</MenuItem>
@@ -125,7 +126,7 @@ export const Profile = () => {
                 <Input
                   control={control}
                   errors={errors}
-                  register={register('phone_number')}
+                  register={register('phone_number', { value: user?.phone })}
                   name='phone_number'
                   placeholder='Phone number'
                 />
@@ -133,6 +134,7 @@ export const Profile = () => {
               <Controller
                 name='birth_date'
                 control={control}
+                defaultValue={dayjs(user?.birthdate)}
                 render={({ field: { onChange, value, ref } }) => (
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker
@@ -166,6 +168,7 @@ export const Profile = () => {
               <Controller
                 control={control}
                 name='gender'
+                defaultValue={user?.gender}
                 render={({ field: { value, onChange } }) => (
                   <FormControl>
                     <FormLabel
