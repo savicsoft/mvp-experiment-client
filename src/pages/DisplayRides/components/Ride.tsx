@@ -10,7 +10,7 @@ export const Ride = ({
   user,
 }: RideTypes) => {
   return (
-    <div className='flex justify-between border rounded-md border-[#231918] py-7 pl-8 pr-5 max-w-[800px]'>
+    <div className='flex justify-between border rounded-md border-[#231918] py-7 pl-8 pr-5 w-[800px]'>
       <div>
         <div className='flex gap-9'>
           <img className='rounded-md' src='/images/ride.png' alt='ride' />

@@ -5,6 +5,9 @@ import { RideTypes } from './components/RideTypes';
 import { getRideService } from '@/services/rideServices';
 export const useDisplayRides = () => {
   const [date, setDate] = useState<Dayjs | null>(dayjs(new Date()));
+  const [isActive, setIsActive] = useState(false);
+
+  const handleActive = () => setIsActive(!isActive);
 
   const handleChangeDate = () => (newValue: Dayjs) => setDate(newValue);
 
@@ -21,5 +24,12 @@ export const useDisplayRides = () => {
     | RideTypes
     | undefined;
 
-  return { date, setDate, handleChangeDate, ride: finalData };
+  return {
+    date,
+    setDate,
+    handleChangeDate,
+    ride: finalData,
+    isActive,
+    handleActive,
+  };
 };
