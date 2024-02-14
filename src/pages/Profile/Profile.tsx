@@ -347,9 +347,16 @@ export const Profile = () => {
           <h1 className='text-3xl font-bold mb-4 capitalize'>
             Car information
           </h1>
-          <h3 className='text-stone-750 text-lg mb-3'>
-            Add information about your vehicle to be able to publish your rides{' '}
-          </h3>
+          {user?.car ? (
+            <h3 className='text-stone-750 text-lg mb-3'>
+              Add information about your vehicle to be able to publish your
+              rides{' '}
+            </h3>
+          ) : (
+            <div className='flex'>
+              <div></div>
+            </div>
+          )}
 
           <button className='text-3xl w-max bg-rose-150 hover:bg-rose-200 transition-colors rounded-xl px-3 flex gap-10 items-center font-jomhuria mb-20'>
             {!user?.car ? (
