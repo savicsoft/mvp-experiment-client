@@ -17,7 +17,7 @@ export const getRideService = () => {
       startOfRide: '07:00',
       endOfRide: '9:45',
     },
-    passangers: 2,
+    passengers: 2,
     duration: '2.45h',
     price: 60,
   } as RideTypes);

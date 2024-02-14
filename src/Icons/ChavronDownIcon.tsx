@@ -10,9 +10,9 @@ export const ChavronDownIcon = () => {
       <path
         d='M5 15L12 8L19 15'
         stroke='#231918'
-        stroke-width='2'
-        stroke-linecap='round'
-        stroke-linejoin='round'
+        strokeWidth='2'
+        strokeLinecap='round'
+        strokeLinejoin='round'
       />
     </svg>
   );

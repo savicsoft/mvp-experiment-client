@@ -5,3 +5,9 @@ export type signUpType = {
   password: string;
   validatePassword: string;
 };
+
+export type HeaderSearchBarSchemaType = {
+  placeFrom: string;
+  placeTo: string;
+  passangers: number;
+};

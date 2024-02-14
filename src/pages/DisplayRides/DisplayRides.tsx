@@ -1,49 +1,16 @@
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useDisplayRides } from './useDiplayRides';
-import { PersonAddIcon } from '@/Icons/PersonAddIcon';
 import { Ride } from './components';
 import { ChavronDownIcon } from '@/Icons/ChavronDownIcon';
+import { HeaderSearchBar } from '@/components/HeaderSearchBar/HeaderSearchBar';
 
 export const DisplayRides = () => {
-  const { date, handleChangeDate, ride, isActive, handleActive } =
-    useDisplayRides();
+  const { ride, isActive, handleActive } = useDisplayRides();
   return (
     <div>
       <div className='px-14 '>
         <img src='/images/display-rides.png' alt='' />
       </div>
-
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <form className='mx-6 border rounded-md border-[#231918] '>
-          <div className='px-7 py-10 flex justify-between items-center'>
-            <input
-              placeholder='From'
-              className='border rounded-md border-[#231918] px-2 py-4 m-w-64'
-            />
-            <input
-              placeholder='To'
-              className='border rounded-md border-[#231918] px-2 py-4 m-w-64'
-            />
-            <DatePicker value={date} onChange={handleChangeDate} />
-            <label htmlFor='passanger'>
-              <select
-                name='passanger'
-                className='border rounded-md border-[#231918] px-2 py-4 m-w-64'
-              >
-                <option>Adults</option>
-                <option>Children</option>
-                <option>Pets</option>
-              </select>
-              <PersonAddIcon />
-            </label>
-            <button className='rounded-md bg-[#F52B38] text-white text-3xl font-jomhuria h-14 w-48'>
-              Search
-            </button>
-          </div>
-        </form>
-      </LocalizationProvider>
+      <HeaderSearchBar />
       <div className='flex justify-between px-7 font-robotoCondensed text-xl mt-16 '>
         <div className='w-96'>
           <p className=' uppercase font-bold font-robotoCondensed text-3xl pb-10 border-b border-b-black'>
@@ -144,7 +111,7 @@ export const DisplayRides = () => {
               <ChavronDownIcon />
             </span>
           </div>
-          <button className=' h-14 mt-10 w-full rounded-md bg-[#F52B38] text-white font-jomhuria text-3xl'>
+          <button className='h-14 mt-10 w-full rounded-md bg-[#F52B38] text-white font-jomhuria text-3xl'>
             Search
           </button>
         </div>

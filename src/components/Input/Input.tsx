@@ -1,4 +1,4 @@
-import { InputsType } from '@/types';
+import { InputType } from '@/components/Input';
 import { ErrorMessage } from '@hookform/error-message';
 
 export const Input = ({
@@ -10,7 +10,7 @@ export const Input = ({
   value,
   register,
   errors,
-}: InputsType) => {
+}: InputType) => {
   return (
     <div>
       {title && <label htmlFor={name}>{title}</label>}
