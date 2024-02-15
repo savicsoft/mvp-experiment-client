@@ -7,23 +7,26 @@ export const DisplayRides = () => {
   const { ride, isActive, handleActive } = useDisplayRides();
   return (
     <div>
-      <div className='px-14 '>
-        <img src='/images/display-rides.png' alt='' />
+      <div className='px-14'>
+        <img src='/images/display-rides.png' className='w-full' alt='' />
       </div>
       <HeaderSearchBar />
       <div className='flex justify-between px-7 font-robotoCondensed text-xl mt-16 '>
         <div className='w-96'>
-          <p className=' uppercase font-bold font-robotoCondensed text-3xl pb-10 border-b border-b-black'>
+          <p className='uppercase font-bold font-robotoCondensed text-3xl pb-10 border-b border-b-black'>
             sort by
           </p>
-          <div className='flex justify-between mt-5 ' onClick={handleActive}>
+          <div
+            className='flex justify-between mt-5'
+            onClick={() => handleActive('popular')}
+          >
             Popular
-            <span className={isActive ? 'rotate-180' : 'rotate-90'}>
+            <span className={isActive.popular ? 'rotate-180' : 'rotate-90'}>
               <ChavronDownIcon />
             </span>
           </div>
           <div className='border-b border-black pb-5 '>
-            {isActive ? (
+            {isActive.popular ? (
               <>
                 <div className='flex flex-col gap-5 mt-10'>
                   <label className='flex items-center'>
@@ -60,14 +63,17 @@ export const DisplayRides = () => {
               ''
             )}
           </div>
-          <div className='flex justify-between mt-5  ' onClick={handleActive}>
+          <div
+            className='flex justify-between mt-5'
+            onClick={() => handleActive('distance')}
+          >
             Distance:
-            <span className={isActive ? 'rotate-180' : 'rotate-90'}>
+            <span className={isActive.distance ? 'rotate-180' : 'rotate-90'}>
               <ChavronDownIcon />
             </span>
           </div>
           <div>
-            {isActive ? (
+            {isActive.distance ? (
               <>
                 <div className='flex flex-col gap-5 mt-10  pb-5 border-b border-black'>
                   <label className='flex items-center'>
@@ -95,33 +101,44 @@ export const DisplayRides = () => {
           </p>
           <div
             className='flex justify-between mt-5  border-b border-b-black pb-5 '
-            onClick={handleActive}
+            onClick={() => handleActive('priceRange')}
           >
             Price Range:
-            <span className={isActive ? 'rotate-180' : 'rotate-90'}>
+            <span className={isActive.priceRange ? 'rotate-180' : 'rotate-90'}>
               <ChavronDownIcon />
             </span>
           </div>
           <div
-            className='flex justify-between mt-5  border-b border-b-black pb-5 '
-            onClick={handleActive}
+            className='flex justify-between mt-5  border-b border-b-black pb-5 mb-5 '
+            onClick={() => handleActive('carInformation')}
           >
             Car information:
-            <span className={isActive ? 'rotate-180' : 'rotate-90'}>
+            <span
+              className={isActive.carInformation ? 'rotate-180' : 'rotate-90'}
+            >
               <ChavronDownIcon />
             </span>
           </div>
-          <button className='h-14 mt-10 w-full rounded-md bg-[#F52B38] text-white font-jomhuria text-3xl'>
-            Search
-          </button>
+          <button className='btn-primary'>Search</button>
         </div>
-        <div>
+        <div className='w-full'>
           <Ride
             date={ride?.date}
             duration={ride?.duration}
             price={ride?.price}
             time={ride?.time}
             user={ride?.user}
+            ride={ride?.ride}
+            passangers={ride?.passangers}
+          />
+          <Ride
+            date={ride?.date}
+            duration={ride?.duration}
+            price={ride?.price}
+            time={ride?.time}
+            user={ride?.user}
+            ride={ride?.ride}
+            passangers={ride?.passangers}
           />
         </div>
       </div>

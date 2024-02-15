@@ -7,3 +7,8 @@
     font-family: 'Roboto Condensed', Jomhuria, sans-serif;
   }
 }
+@layer components {
+  .btn-primary {
+    @apply rounded-md w-full h-14 bg-[#F52B38] text-white text-3xl font-jomhuria;
+  }
+}

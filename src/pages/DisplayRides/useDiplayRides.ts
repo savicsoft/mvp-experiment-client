@@ -2,11 +2,25 @@ import { useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { RideTypes } from './components/RideTypes';
 import { getRideService } from '@/services/rideServices';
-
+import { OpenStateFiltersType } from './DisplayRideType';
 export const useDisplayRides = () => {
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState<OpenStateFiltersType>({
+    popular: false,
+    distance: false,
+    priceRange: false,
+    carInformation: false,
+  });
 
-  const handleActive = () => setIsActive(!isActive);
+  const handleActive = (isOpen: keyof OpenStateFiltersType) => {
+    setIsActive((prevState) => ({
+      ...prevState,
+      popular: isOpen === 'popular' ? !prevState.popular : false,
+      distance: isOpen === 'distance' ? !prevState.distance : false,
+      priceRange: isOpen === 'priceRange' ? !prevState.priceRange : false,
+      carInformation:
+        isOpen === 'carInformation' ? !prevState.carInformation : false,
+    }));
+  };
 
   const queryClient = useQueryClient();
 

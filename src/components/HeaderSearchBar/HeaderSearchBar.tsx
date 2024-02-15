@@ -17,14 +17,12 @@ export const HeaderSearchBar = () => {
             placeholder='From'
             className='border rounded-md border-[#231918] px-2 py-4'
             {...register('placeFrom')}
-            name=''
           />
           <input
             type='text'
             placeholder='To'
             className='border rounded-md border-[#231918] px-2 py-4'
             {...register('placeTo')}
-            name=''
           />
           <DatePicker value={date} onChange={handleChangeDate} />
           <label htmlFor='passengers'>

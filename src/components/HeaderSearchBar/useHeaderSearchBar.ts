@@ -9,7 +9,6 @@ export const useHeaderSearchBar = () => {
   const [date, setDate] = useState<Dayjs | null>(dayjs(new Date()));
 
   const handleChangeDate = () => (newValue: Dayjs) => setDate(newValue);
-
   const { register, handleSubmit } = useForm<HeaderSearchBarSchemaType>({
     mode: 'onSubmit',
     resolver: zodResolver(HeaderSearchBarSchema),
@@ -19,5 +18,12 @@ export const useHeaderSearchBar = () => {
     console.log(data);
   };
 
-  return { register, handleSubmit, date, setDate, handleChangeDate, onSubmit };
+  return {
+    register,
+    handleSubmit,
+    date,
+    setDate,
+    handleChangeDate,
+    onSubmit,
+  };
 };
