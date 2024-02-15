@@ -6,3 +6,4 @@ export * from './Modal';
 export * from './Header';
 export * from './TwinPassInput';
 export * from './TwinElements';
+export * from './Slider';

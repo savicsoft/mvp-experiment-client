@@ -1,7 +1,15 @@
-import { RoundPlusIcon, PencilIcon, RatingStarIcon } from '@/Icons';
+import {
+  RoundPlusIcon,
+  PencilIcon,
+  RatingStarIcon,
+  CarIcon,
+  GasIcon,
+  ColorBucketIcon,
+  GarbIcon,
+} from '@/Icons';
 import { useProfile } from './useProfile';
 import { Fragment } from 'react';
-import { Input, Modal, Button } from '@/components';
+import { Input, Modal, Button, Slider } from '@/components';
 import {
   ArrowLeftIcon,
   DatePicker,
@@ -347,14 +355,56 @@ export const Profile = () => {
           <h1 className='text-3xl font-bold mb-4 capitalize'>
             Car information
           </h1>
-          {user?.car ? (
+          {!user?.car ? (
             <h3 className='text-stone-750 text-lg mb-3'>
               Add information about your vehicle to be able to publish your
               rides{' '}
             </h3>
           ) : (
-            <div className='flex'>
-              <div></div>
+            <div className='flex border-2 border-black rounded-xl items-center justify-between gap-20 py-4 px-6 mb-10'>
+              <div className='ml-10 '>
+                <Slider imgs={user?.car?.photos || []} />
+              </div>
+              <div className='flex flex-1 justify-between'>
+                <div>
+                  {' '}
+                  <h3 className='flex gap-1 mb-2 text-lg'>
+                    <CarIcon /> <span className='font-bold ml-3'>Number:</span>{' '}
+                    <span>{user?.car.registration_number}</span>
+                  </h3>
+                  <h3 className='flex gap-1 mb-2 text-lg'>
+                    <CarIcon /> <span className='font-bold ml-3'>Model:</span>{' '}
+                    <span>{user?.car.model}</span>
+                  </h3>
+                  <h3 className='flex gap-1 mb-2 text-lg'>
+                    <CarIcon /> <span className='font-bold ml-3'>Year:</span>{' '}
+                    <span>{user?.car.year}</span>
+                  </h3>
+                  <h3 className='flex gap-1 mb-2 text-lg'>
+                    <CarIcon />{' '}
+                    <span className='font-bold ml-3'>Body Style:</span>{' '}
+                    <span>{user?.car.registration_number}</span>
+                  </h3>
+                  <h3 className='flex gap-1 mb-2 text-lg'>
+                    <GasIcon />{' '}
+                    <span className='font-bold ml-3'>Gas Type:</span>{' '}
+                    <span>{user?.car.gas_type}</span>
+                  </h3>
+                  <h3 className='flex gap-1 mb-2 text-lg'>
+                    <GasIcon />{' '}
+                    <span className='font-bold ml-3'>Fuel Effieciency:</span>{' '}
+                    <span>{user?.car.fuel_efficiency}</span>
+                  </h3>
+                  <h3 className='flex gap-1 mb-2 text-lg'>
+                    <ColorBucketIcon />{' '}
+                    <span className='font-bold ml-3'>Color:</span>{' '}
+                    <span>{user?.car.color}</span>
+                  </h3>
+                </div>
+                <button className='bg-rose-150 p-2 w-fit h-fit rounded-full'>
+                  <GarbIcon />
+                </button>
+              </div>
             </div>
           )}
 

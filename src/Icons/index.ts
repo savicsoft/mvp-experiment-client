@@ -7,3 +7,4 @@ export * from './PersonIcon.tsx';
 export * from './CarIcon.tsx';
 export * from './GasIcon.tsx';
 export * from './ColorBucketIcon.tsx';
+export * from './GarbIcon.tsx';
