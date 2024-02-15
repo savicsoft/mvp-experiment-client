@@ -4,6 +4,7 @@ export type signUpType = {
   email: string;
   password: string;
   validatePassword: string;
+  phoneNumber: string;
 };
 
 export type HeaderSearchBarSchemaType = {

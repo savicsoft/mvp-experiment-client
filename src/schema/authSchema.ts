@@ -112,3 +112,30 @@ export const loginSchema = () => {
     remember: z.boolean().optional(),
   });
 };
+
+export const profileSchema = z.object({
+  firstname: z
+    .string()
+    .min(3)
+    .max(15)
+    .regex(/^[/^[A-Za-zÀ-ÖØ-öø-ÿ -']+$/i, 'Letters only')
+    .optional()
+    .transform((e) => (e === '' ? undefined : e)),
+  lastname: z
+    .string()
+    .min(3)
+    .max(15)
+    .regex(/^[/^[A-Za-zÀ-ÖØ-öø-ÿ -']+$/i, 'Letters only')
+    .optional(),
+  country: z.string().optional(),
+  phone_number: z
+    .string()
+    .regex(
+      /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/,
+      'Digits only',
+    )
+    .refine((data) => data.length === 11, 'Should be 11 digits')
+    .optional(),
+  birth_date: z.any().optional(),
+  gender: z.string().optional(),
+});

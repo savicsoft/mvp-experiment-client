@@ -1,14 +1,14 @@
 import { EyeIcon } from '@/Icons';
 import { useRevealPass } from '@/hooks';
 import { signUpSchema } from '@/schema';
-import { InputsType } from '@/types';
+import { SingInUpType } from '@/types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
 export const TwinPassInput = () => {
   const { revPass, setRevPass } = useRevealPass();
 
-  const form = useForm<InputsType>({
+  const form = useForm<SingInUpType>({
     mode: 'onChange',
     resolver: zodResolver(signUpSchema),
   });

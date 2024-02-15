@@ -4,3 +4,5 @@ export * from './RatingStarIcon.tsx';
 export * from './EyeIcon.tsx';
 export * from './ChavronDownIcon.tsx';
 export * from './PersonAddIcon.tsx';
+export * from './DownIcon.tsx';
+export * from './PersonIcon.tsx';
