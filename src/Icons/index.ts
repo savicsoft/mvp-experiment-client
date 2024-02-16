@@ -4,3 +4,7 @@ export * from './RatingStarIcon.tsx';
 export * from './EyeIcon.tsx';
 export * from './DownIcon.tsx';
 export * from './PersonIcon.tsx';
+export * from './CarIcon.tsx';
+export * from './GasIcon.tsx';
+export * from './ColorBucketIcon.tsx';
+export * from './GarbIcon.tsx';
