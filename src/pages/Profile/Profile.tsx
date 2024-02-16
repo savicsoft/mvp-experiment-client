@@ -20,6 +20,7 @@ import {
   RadioGroup,
   Select,
 } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export const Profile = () => {
   const {
@@ -360,12 +361,12 @@ export const Profile = () => {
                 </span>
               </Fragment>
             ) : (
-              <Fragment>
+              <Link to='/profile/car' className='flex items-center gap-4 '>
                 <span className='pt-1'>update info</span>
                 <span>
                   <PencilIcon />
                 </span>
-              </Fragment>
+              </Link>
             )}
           </button>
 

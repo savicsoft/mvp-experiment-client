@@ -14,6 +14,7 @@ import {
   SignUp,
   ForgotPassword,
   ResetPassword,
+  ProfileCar,
 } from '@/pages';
 
 const routing = createBrowserRouter([
@@ -28,6 +29,10 @@ const routing = createBrowserRouter([
       {
         path: '/profile',
         element: <Profile />,
+      },
+      {
+        path: '/profile/car',
+        element: <ProfileCar />,
       },
     ],
   },
