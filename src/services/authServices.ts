@@ -24,8 +24,8 @@ export const getUser = () => {
       color: 'red',
       photos: [
         '/images/profile-banner.png',
-        '/images/profile-banner.png',
-        '/images/profile-banner.png',
+        '/images/carkey-passed.png',
+        '/images/field_error.png',
       ],
     },
   } as UserType);
