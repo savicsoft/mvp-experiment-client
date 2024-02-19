@@ -1,4 +1,4 @@
-export type HeaderSearchBarPassangerType = {
+export type HeaderSearchBarPassengerType = {
   adults: number;
   children: number;
   pets: number;

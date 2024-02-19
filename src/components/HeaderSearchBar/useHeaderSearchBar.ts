@@ -5,20 +5,20 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { HeaderSearchBarSchema } from '@/schema/HeaderSearchBarSchema';
 import { HeaderSearchBarSchemaType } from '@/schema/type';
 
-import { HeaderSearchBarPassangerType } from './HeaderSearchBarPassangersTypes';
+import { HeaderSearchBarPassengerType } from './HeaderSearchBarPassangersTypes';
 
 export const useHeaderSearchBar = () => {
   const [date, setDate] = useState<Dayjs | null>(dayjs(new Date()));
   const [placeFrom, setPlaceFrom] = useState<string>('');
   const [placeTo, setPlaceTo] = useState<string>('');
-  const [passangers, setPassangers] = useState({
+  const [passengers, setPassengers] = useState({
     adults: 0,
     children: 0,
     pets: 0,
   });
-  let totalPassangers =
-    passangers.adults + passangers.children + passangers.pets;
-  console.log(totalPassangers);
+  let totalPassengers =
+    passengers.adults + passengers.children + passengers.pets;
+  console.log(totalPassengers);
   const handleChangeDate = () => (newValue: Dayjs) => setDate(newValue);
   const handleChangePlaceFrom = (e: {
     target: { value: SetStateAction<string> };
@@ -30,33 +30,33 @@ export const useHeaderSearchBar = () => {
   }) => {
     setPlaceTo(e.target.value);
   };
-  const handleAddPassangers = (
-    passanger: keyof HeaderSearchBarPassangerType,
+  const handleAddPassengers = (
+    passanger: keyof HeaderSearchBarPassengerType,
   ) => {
-    setPassangers((prevPassanger) => ({
+    setPassengers((prevPassanger) => ({
       ...prevPassanger,
       adults:
-        passanger === 'adults' ? passangers.adults + 1 : passangers.adults,
+        passanger === 'adults' ? passengers.adults + 1 : passengers.adults,
       children:
         passanger === 'children'
-          ? passangers.children + 1
-          : passangers.children,
-      pets: passanger === 'pets' ? passangers.pets + 1 : passangers.pets,
+          ? passengers.children + 1
+          : passengers.children,
+      pets: passanger === 'pets' ? passengers.pets + 1 : passengers.pets,
     }));
   };
 
-  const handleRemovePassangers = (
-    passanger: keyof HeaderSearchBarPassangerType,
+  const handleRemovePassengers = (
+    passanger: keyof HeaderSearchBarPassengerType,
   ) => {
-    setPassangers((prevPassanger) => ({
+    setPassengers((prevPassanger) => ({
       ...prevPassanger,
       adults:
-        passanger === 'adults' ? passangers.adults - 1 : passangers.adults,
+        passanger === 'adults' ? passengers.adults - 1 : passengers.adults,
       children:
         passanger === 'children'
-          ? passangers.children - 1
-          : passangers.children,
-      pets: passanger === 'pets' ? passangers.pets - 1 : passangers.pets,
+          ? passengers.children - 1
+          : passengers.children,
+      pets: passanger === 'pets' ? passengers.pets - 1 : passengers.pets,
     }));
   };
 
@@ -75,14 +75,14 @@ export const useHeaderSearchBar = () => {
     date,
     placeFrom,
     placeTo,
-    passangers,
-    totalPassangers,
+    passengers,
+    totalPassengers,
     setDate,
     onSubmit,
     handleChangeDate,
-    handleAddPassangers,
+    handleAddPassengers,
     handleChangePlaceFrom,
     handleChangePlaceTo,
-    handleRemovePassangers,
+    handleRemovePassengers,
   };
 };

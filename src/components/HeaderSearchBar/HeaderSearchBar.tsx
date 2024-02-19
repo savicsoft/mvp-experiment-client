@@ -11,13 +11,13 @@ export const HeaderSearchBar = () => {
   const {
     placeFrom,
     placeTo,
-    passangers,
+    passengers,
     date,
-    totalPassangers,
-    handleAddPassangers,
+    totalPassengers,
+    handleAddPassengers,
     handleChangePlaceFrom,
     handleChangePlaceTo,
-    handleRemovePassangers,
+    handleRemovePassengers,
     handleChangeDate,
     register,
     handleSubmit,
@@ -47,18 +47,18 @@ export const HeaderSearchBar = () => {
           <DatePicker value={date} onChange={handleChangeDate} />
 
           <InputLabel
-            id='passangers'
+            id='passengers'
             sx={{
               display: 'flex',
               justifyContent: 'space-between',
               width: '16.5rem',
             }}
           >
-            <span>Passangers: {totalPassangers}</span>
+            <span>Passengers: {totalPassengers}</span>
             <PersonAddIcon />
           </InputLabel>
           <Select
-            labelId='passangers'
+            labelId='passengers'
             sx={{
               border: '1px solid #231918',
               borderRadius: '0.375rem',
@@ -76,11 +76,11 @@ export const HeaderSearchBar = () => {
                 </span>
               </div>
               <div className='flex gap-5'>
-                <button onClick={() => handleRemovePassangers('adults')}>
+                <button onClick={() => handleRemovePassengers('adults')}>
                   <MinusIcon />
                 </button>
-                <span>{passangers.adults}</span>
-                <button onClick={() => handleAddPassangers('adults')}>
+                <span>{passengers.adults}</span>
+                <button onClick={() => handleAddPassengers('adults')}>
                   <PlusIcon />
                 </button>
               </div>
@@ -95,11 +95,11 @@ export const HeaderSearchBar = () => {
                 </span>
               </div>
               <div className='flex gap-5'>
-                <button onClick={() => handleRemovePassangers('children')}>
+                <button onClick={() => handleRemovePassengers('children')}>
                   <MinusIcon />
                 </button>
-                <span>{passangers.children}</span>
-                <button onClick={() => handleAddPassangers('children')}>
+                <span>{passengers.children}</span>
+                <button onClick={() => handleAddPassengers('children')}>
                   <PlusIcon />
                 </button>
               </div>
@@ -109,11 +109,11 @@ export const HeaderSearchBar = () => {
             >
               <div>Pets</div>
               <div className='flex gap-5'>
-                <button onClick={() => handleRemovePassangers('pets')}>
+                <button onClick={() => handleRemovePassengers('pets')}>
                   <MinusIcon />
                 </button>
-                <span>{passangers.pets}</span>
-                <button onClick={() => handleAddPassangers('pets')}>
+                <span>{passengers.pets}</span>
+                <button onClick={() => handleAddPassengers('pets')}>
                   <PlusIcon />
                 </button>
               </div>
