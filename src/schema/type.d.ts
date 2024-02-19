@@ -10,5 +10,6 @@ export type signUpType = {
 export type HeaderSearchBarSchemaType = {
   placeFrom: string;
   placeTo: string;
+  date: string;
   passangers: number;
 };
