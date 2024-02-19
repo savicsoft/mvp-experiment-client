@@ -362,7 +362,7 @@ export const Profile = () => {
               rides{' '}
             </h3>
           ) : (
-            <div className='flex border-2 border-black rounded-xl items-center justify-between gap-20 py-4 px-6 mb-10'>
+            <div className='flex bordper-2 border-black rounded-xl items-center justify-between gap-20 py-4 px-6 mb-10'>
               <div className='ml-10 '>
                 <Slider imgs={user?.car?.photos || []} />
               </div>

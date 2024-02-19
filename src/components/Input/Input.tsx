@@ -3,16 +3,9 @@ import { InputType } from './type.d';
 import { ErrorMessage } from '@hookform/error-message';
 import { Controller } from 'react-hook-form';
 
-export const Input = ({
-  name,
-  title,
-  placeholder,
-  errors,
-  control,
-}: InputType) => {
+export const Input = ({ name, placeholder, errors, control }: InputType) => {
   return (
     <div className='relative text-xl outline-black w-full'>
-      {title && <label htmlFor={name}>{title}</label>}
       <Controller
         control={control}
         name={name}
