@@ -18,34 +18,32 @@ export const ProfileCar = () => {
             <Input
               control={control}
               errors={errors}
-              name='body_style'
-              register={register('body_style')}
-              title='tit'
-              placeholder='tot'
+              name='registration_number'
+              register={register('registration_number')}
+              placeholder='Registration Number'
             />
+            <div className='flex gap-6'>
+              <Input
+                control={control}
+                errors={errors}
+                name='brand'
+                register={register('brand')}
+                placeholder='Brand'
+              />
+              <Input
+                control={control}
+                errors={errors}
+                name='model'
+                register={register('model')}
+                placeholder='Model'
+              />
+            </div>
             <Input
               control={control}
               errors={errors}
-              name='body_style'
-              register={register('body_style')}
-              title='tit'
-              placeholder='tot'
-            />
-            <Input
-              control={control}
-              errors={errors}
-              name='body_style'
-              register={register('body_style')}
-              title='tit'
-              placeholder='tot'
-            />
-            <Input
-              control={control}
-              errors={errors}
-              name='body_style'
-              register={register('body_style')}
-              title='tit'
-              placeholder='tot'
+              name='year'
+              register={register('year')}
+              placeholder='year'
             />
           </div>
           <div className=' h-full'>
