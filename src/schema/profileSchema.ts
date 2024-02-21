@@ -36,8 +36,8 @@ export const profileCarSchema = z.object({
   model: z.string().optional(),
   year: z.any().optional(),
   body_style: z.any().optional(),
-  gat_type: z.string().optional(),
-  fuel_effieciency: z.string().optional(),
+  gas_type: z.string().optional(),
+  fuel_effieciency: z.number().optional(),
   color: z.string().optional(),
   photos: z.array(z.string()).optional(),
 });
