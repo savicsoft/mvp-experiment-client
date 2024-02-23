@@ -101,9 +101,9 @@ export const Profile = () => {
                             borderWidth: '2px',
                             borderRadius: '12px',
                           },
+                          borderWidth: '2px',
                           '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
                             borderColor: 'black',
-                            borderWidth: '2px',
                           },
                           '&:hover .MuiOutlinedInput-notchedOutline': {
                             borderColor: 'black',

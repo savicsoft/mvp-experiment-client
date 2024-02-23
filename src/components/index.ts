@@ -7,3 +7,4 @@ export * from './Header';
 export * from './TwinPassInput';
 export * from './TwinElements';
 export * from './Slider';
+export * from './ProfileSelect';

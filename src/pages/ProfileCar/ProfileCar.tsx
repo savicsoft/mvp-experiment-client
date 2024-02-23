@@ -1,16 +1,15 @@
-import { Input } from '@/components';
+import { Input, ProfileSelect } from '@/components';
 import { useProfileCar } from './useProfileCar';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { ArrowLeftIcon } from '@mui/x-date-pickers';
-import { Controller } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 export const ProfileCar = () => {
-  const { control, errors, handleSubmit, register, user } = useProfileCar();
+  const { control, errors, handleSubmit, register, finalData } =
+    useProfileCar();
 
   return (
     <div className='mx-6 '>
       <h3 className='text-stone-650 text-lg font-thin my-12'>
-        Profile / Car Information
+        <Link to='/profile'>Profile</Link> / Car Information
       </h3>
       <div className='max-w-[1275px] mx-auto'>
         <h1 className='text-4xl font-bold tracking-tight mb-6'>
@@ -22,7 +21,9 @@ export const ProfileCar = () => {
               control={control}
               errors={errors}
               name='registration_number'
-              register={register('registration_number')}
+              register={register('registration_number', {
+                value: finalData?.car?.registration_number,
+              })}
               placeholder='Registration Number'
             />
             <div className='flex gap-6'>
@@ -48,162 +49,35 @@ export const ProfileCar = () => {
               register={register('year')}
               placeholder='year'
             />
-
-            <Controller
+            <ProfileSelect
+              control={control}
+              values={[
+                { value: 'first', key: 'fist style' },
+                { value: 'second', key: 'second style' },
+              ]}
+              defaultVal={finalData?.car?.body_style}
               name='body_style'
-              control={control}
-              defaultValue={user?.car?.body_style || ''}
-              render={({ field: { onChange, value } }) => (
-                <FormControl>
-                  <InputLabel className='-ml-2 z-10 bg-white !px-1 block !text-black'>
-                    Body Style
-                  </InputLabel>
-                  <Select
-                    onChange={onChange}
-                    MenuProps={{
-                      disableScrollLock: true,
-                    }}
-                    sx={{
-                      color: 'black',
-                      '.MuiOutlinedInput-notchedOutline': {
-                        borderColor: 'black',
-                        borderWidth: '2px',
-                        borderRadius: '12px',
-                      },
-                      '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                        borderColor: 'black',
-                        borderWidth: '2px',
-                      },
-                      '&:hover .MuiOutlinedInput-notchedOutline': {
-                        borderColor: 'black',
-                        borderWidth: '2px',
-                      },
-                      '.MuiSvgIcon-root ': {
-                        fill: 'black !important',
-                      },
-                    }}
-                    inputProps={{
-                      classes: {
-                        icon: 'fill-black',
-                      },
-                    }}
-                    IconComponent={() => (
-                      <div className='relative pointer-events-none'>
-                        <ArrowLeftIcon className='absolute -left-1 -bottom-1.5 rotate-90 -translate-x-full !w-5 !h-5' />
-                        <ArrowLeftIcon className='absolute -left-1 -top-1.5 -rotate-90 -translate-x-full !w-5 !h-5' />
-                      </div>
-                    )}
-                    value={value}
-                  >
-                    <MenuItem value='style1'>style1</MenuItem>
-                    <MenuItem value='style2'>style2</MenuItem>
-                  </Select>
-                </FormControl>
-              )}
+              title='Body style'
             />
-            <Controller
+            <ProfileSelect
+              control={control}
+              values={[
+                { value: 'first', key: 'first type' },
+                { value: 'second', key: 'second type' },
+              ]}
+              defaultVal={finalData?.car?.gas_type}
               name='gas_type'
-              control={control}
-              defaultValue={user?.car?.gas_type || ''}
-              render={({ field: { onChange, value } }) => (
-                <FormControl>
-                  <InputLabel className='-ml-2 z-10 bg-white !px-1 block !text-black'>
-                    Gas type
-                  </InputLabel>
-                  <Select
-                    onChange={onChange}
-                    MenuProps={{
-                      disableScrollLock: true,
-                    }}
-                    sx={{
-                      color: 'black',
-                      '.MuiOutlinedInput-notchedOutline': {
-                        borderColor: 'black',
-                        borderWidth: '2px',
-                        borderRadius: '12px',
-                      },
-                      '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                        borderColor: 'black',
-                        borderWidth: '2px',
-                      },
-                      '&:hover .MuiOutlinedInput-notchedOutline': {
-                        borderColor: 'black',
-                        borderWidth: '2px',
-                      },
-                      '.MuiSvgIcon-root ': {
-                        fill: 'black !important',
-                      },
-                    }}
-                    inputProps={{
-                      classes: {
-                        icon: 'fill-black',
-                      },
-                    }}
-                    IconComponent={() => (
-                      <div className='relative pointer-events-none'>
-                        <ArrowLeftIcon className='absolute -left-1 -bottom-1.5 rotate-90 -translate-x-full !w-5 !h-5' />
-                        <ArrowLeftIcon className='absolute -left-1 -top-1.5 -rotate-90 -translate-x-full !w-5 !h-5' />
-                      </div>
-                    )}
-                    value={value}
-                  >
-                    <MenuItem value='type1'>type1</MenuItem>
-                    <MenuItem value='type2'>type2</MenuItem>
-                  </Select>
-                </FormControl>
-              )}
+              title='Gas type'
             />
-            <Controller
-              name='fuel_effieciency'
+            <ProfileSelect
               control={control}
-              defaultValue={user?.car?.fuel_efficiency}
-              render={({ field: { onChange, value } }) => (
-                <FormControl>
-                  <InputLabel className='-ml-2 z-10 bg-white !px-1 block !text-black'>
-                    Fuel Efficiency
-                  </InputLabel>
-                  <Select
-                    onChange={onChange}
-                    MenuProps={{
-                      disableScrollLock: true,
-                    }}
-                    sx={{
-                      color: 'black',
-                      '.MuiOutlinedInput-notchedOutline': {
-                        borderColor: 'black',
-                        borderWidth: '2px',
-                        borderRadius: '12px',
-                      },
-                      '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                        borderColor: 'black',
-                        borderWidth: '2px',
-                      },
-                      '&:hover .MuiOutlinedInput-notchedOutline': {
-                        borderColor: 'black',
-                        borderWidth: '2px',
-                      },
-                      '.MuiSvgIcon-root ': {
-                        fill: 'black !important',
-                      },
-                    }}
-                    inputProps={{
-                      classes: {
-                        icon: 'fill-black',
-                      },
-                    }}
-                    IconComponent={() => (
-                      <div className='relative pointer-events-none'>
-                        <ArrowLeftIcon className='absolute -left-1 -bottom-1.5 rotate-90 -translate-x-full !w-5 !h-5' />
-                        <ArrowLeftIcon className='absolute -left-1 -top-1.5 -rotate-90 -translate-x-full !w-5 !h-5' />
-                      </div>
-                    )}
-                    value={value}
-                  >
-                    <MenuItem value='1'>1</MenuItem>
-                    <MenuItem value='2'>2</MenuItem>
-                  </Select>
-                </FormControl>
-              )}
+              values={[
+                { value: '1', key: 'one' },
+                { value: '2', key: 'two' },
+              ]}
+              defaultVal={finalData?.car?.fuel_efficiency}
+              name='fuel_efficiency'
+              title='Fuel efficiency'
             />
           </div>
           <div className=' h-full'>
