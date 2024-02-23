@@ -5,7 +5,6 @@ import { ProfileSelectType } from './type';
 
 export const ProfileSelect = ({
   control,
-  defaultVal,
   values,
   name,
   title,
@@ -14,7 +13,6 @@ export const ProfileSelect = ({
     <Controller
       name={name}
       control={control}
-      defaultValue={defaultVal || ''}
       render={({ field: { onChange, value } }) => (
         <FormControl>
           <InputLabel className='-ml-2 z-10 bg-white !px-1 block !text-black'>

@@ -3,8 +3,7 @@ import { useProfileCar } from './useProfileCar';
 import { Link } from 'react-router-dom';
 
 export const ProfileCar = () => {
-  const { control, errors, handleSubmit, register, finalData } =
-    useProfileCar();
+  const { control, errors, handleSubmit, register } = useProfileCar();
 
   return (
     <div className='mx-6 '>
@@ -21,9 +20,7 @@ export const ProfileCar = () => {
               control={control}
               errors={errors}
               name='registration_number'
-              register={register('registration_number', {
-                value: finalData?.car?.registration_number,
-              })}
+              register={register('registration_number')}
               placeholder='Registration Number'
             />
             <div className='flex gap-6'>
@@ -55,7 +52,6 @@ export const ProfileCar = () => {
                 { value: 'first', key: 'fist style' },
                 { value: 'second', key: 'second style' },
               ]}
-              defaultVal={finalData?.car?.body_style}
               name='body_style'
               title='Body style'
             />
@@ -65,7 +61,6 @@ export const ProfileCar = () => {
                 { value: 'first', key: 'first type' },
                 { value: 'second', key: 'second type' },
               ]}
-              defaultVal={finalData?.car?.gas_type}
               name='gas_type'
               title='Gas type'
             />
@@ -75,7 +70,6 @@ export const ProfileCar = () => {
                 { value: '1', key: 'one' },
                 { value: '2', key: 'two' },
               ]}
-              defaultVal={finalData?.car?.fuel_efficiency}
               name='fuel_efficiency'
               title='Fuel efficiency'
             />

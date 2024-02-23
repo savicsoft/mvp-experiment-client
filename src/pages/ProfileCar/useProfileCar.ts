@@ -7,6 +7,11 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 export const useProfileCar = () => {
+  const queryClient = useQueryClient();
+  const user = queryClient.getQueriesData<UserType>({
+    queryKey: ['user'],
+  })?.[0]?.[1]?.car;
+
   const {
     register,
     handleSubmit,
@@ -17,15 +22,23 @@ export const useProfileCar = () => {
     mode: 'onChange',
     resolver: zodResolver(profileCarSchema),
     shouldUnregister: true,
+    defaultValues: {
+      body_style: user?.body_style || '',
+      brand: user?.brand || '',
+      color: user?.color || '',
+      fuel_efficiency: user?.fuel_efficiency || '',
+      gas_type: user?.gas_type || '',
+      model: user?.model || '',
+      photos: user?.photos || [],
+      registration_number: user?.registration_number || '',
+      year: user?.year || '',
+    },
   });
-
-  const queryClient = useQueryClient();
-  const user = queryClient.getQueriesData<UserType>({ queryKey: ['user'] });
 
   const { data: fetchedData } = useQuery({
     queryKey: ['user'],
     queryFn: getUser,
-    enabled: user?.[0]?.[1] === undefined,
+    enabled: user === undefined,
     staleTime: Infinity,
   });
 
@@ -35,9 +48,5 @@ export const useProfileCar = () => {
     ).forEach((key) => setValue(key, fetchedData!.car![key]));
   }, [fetchedData, setValue]);
 
-  const finalData = (user.length > 0 ? user?.[0]?.[1] : fetchedData) as
-    | UserType
-    | undefined;
-
-  return { register, errors, handleSubmit, control, finalData };
+  return { register, errors, handleSubmit, control };
 };
