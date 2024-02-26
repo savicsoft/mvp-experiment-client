@@ -18,7 +18,7 @@ export const useHeaderSearchBar = () => {
   });
   let totalPassengers =
     passengers.adults + passengers.children + passengers.pets;
-  console.log(totalPassengers);
+
   const handleChangeDate = () => (newValue: Dayjs) => setDate(newValue);
   const handleChangePlaceFrom = (e: {
     target: { value: SetStateAction<string> };
