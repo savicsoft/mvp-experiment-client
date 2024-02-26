@@ -8,13 +8,15 @@ export const ProfileSelect = ({
   values,
   name,
   title,
+  defaultValue = '',
 }: ProfileSelectType) => {
   return (
     <Controller
       name={name}
       control={control}
+      defaultValue={defaultValue}
       render={({ field: { onChange, value } }) => (
-        <FormControl>
+        <FormControl className='w-full'>
           <InputLabel className='-ml-2 z-10 bg-white !px-1 block !text-black'>
             {title}
           </InputLabel>

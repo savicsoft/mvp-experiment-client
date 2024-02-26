@@ -9,7 +9,8 @@ import {
 } from '@/Icons';
 import { useProfile } from './useProfile';
 import { Fragment } from 'react';
-import { Input, Modal, Button, Slider } from '@/components';
+
+import { Input, Modal, Button, Slider, ProfileSelect } from '@/components';
 import {
   ArrowLeftIcon,
   DatePicker,
@@ -80,58 +81,18 @@ export const Profile = () => {
                 control={control}
               />
               <div className='flex gap-4 w-full items-center'>
-                <Controller
-                  name='country'
-                  control={control}
-                  defaultValue={user?.country || 'usa'}
-                  render={({ field: { onChange, value } }) => (
-                    <FormControl className='basis-2/5'>
-                      <InputLabel className='-ml-2 z-10 bg-white !px-1 block !text-black'>
-                        Country
-                      </InputLabel>
-                      <Select
-                        onChange={onChange}
-                        MenuProps={{
-                          disableScrollLock: true,
-                        }}
-                        sx={{
-                          color: 'black',
-                          '.MuiOutlinedInput-notchedOutline': {
-                            borderColor: 'black',
-                            borderWidth: '2px',
-                            borderRadius: '12px',
-                          },
-                          borderWidth: '2px',
-                          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                            borderColor: 'black',
-                          },
-                          '&:hover .MuiOutlinedInput-notchedOutline': {
-                            borderColor: 'black',
-                            borderWidth: '2px',
-                          },
-                          '.MuiSvgIcon-root ': {
-                            fill: 'black !important',
-                          },
-                        }}
-                        inputProps={{
-                          classes: {
-                            icon: 'fill-black',
-                          },
-                        }}
-                        IconComponent={() => (
-                          <div className='relative pointer-events-none'>
-                            <ArrowLeftIcon className='absolute -left-1 -bottom-1.5 rotate-90 -translate-x-full !w-5 !h-5' />
-                            <ArrowLeftIcon className='absolute -left-1 -top-1.5 -rotate-90 -translate-x-full !w-5 !h-5' />
-                          </div>
-                        )}
-                        value={value}
-                      >
-                        <MenuItem value='usa'>USA</MenuItem>
-                        <MenuItem value='uk'>UK</MenuItem>
-                      </Select>
-                    </FormControl>
-                  )}
-                />
+                <div className='basis-2/5'>
+                  <ProfileSelect
+                    defaultValue={user?.country || 'usa'}
+                    control={control}
+                    values={[
+                      { value: 'uk', key: 'uk' },
+                      { value: 'usa', key: 'usa' },
+                    ]}
+                    name='country'
+                    title='Country'
+                  />
+                </div>
                 <Input
                   control={control}
                   errors={errors}
