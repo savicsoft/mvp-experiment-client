@@ -48,5 +48,9 @@ export const useProfileCar = () => {
     ).forEach((key) => setValue(key, fetchedData!.car![key]));
   }, [fetchedData, setValue]);
 
-  return { register, errors, handleSubmit, control };
+  const onSubmit = (data: ProfileCarSchemaType) => {
+    console.log(data);
+  };
+
+  return { register, errors, handleSubmit, control, onSubmit };
 };

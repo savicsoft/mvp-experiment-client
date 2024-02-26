@@ -1,9 +1,10 @@
-import { Input, ProfileSelect } from '@/components';
+import { Input, ProfileSelect, RadioButtonGroup } from '@/components';
 import { useProfileCar } from './useProfileCar';
 import { Link } from 'react-router-dom';
+import { carColors } from '@/config';
 
 export const ProfileCar = () => {
-  const { control, errors, handleSubmit, register } = useProfileCar();
+  const { control, errors, handleSubmit, register, onSubmit } = useProfileCar();
 
   return (
     <div className='mx-6 '>
@@ -15,7 +16,10 @@ export const ProfileCar = () => {
           Car Information
         </h1>
         <div className='flex gap-40 '>
-          <div className='flex basis-[600px] flex-col gap-10'>
+          <form
+            className='flex basis-[600px] flex-col gap-10'
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <Input
               control={control}
               errors={errors}
@@ -73,7 +77,29 @@ export const ProfileCar = () => {
               name='fuel_efficiency'
               title='Fuel efficiency'
             />
-          </div>
+            <div>
+              <h2 className='text-stone-650 text-xl font-medium'>Color</h2>
+              {carColors.map((color) => (
+                <RadioButtonGroup
+                  control={control}
+                  name='color'
+                  values={[{ value: color }]}
+                  RadioCheckedIcon={
+                    <button
+                      className={`w-9 h-9 rounded-full ${color} border-gray-300 border`}
+                      key={color}
+                    />
+                  }
+                  RadioUncheckedIcon={
+                    <button
+                      className={`w-9 h-9 rounded-full ${color} border-stone-600 border-4 bg-opacity-80`}
+                      key={color}
+                    />
+                  }
+                />
+              ))}
+            </div>
+          </form>
           <div className=' h-full'>
             <img
               src='/images/profile-car-page.png'

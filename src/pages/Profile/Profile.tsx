@@ -10,7 +10,14 @@ import {
 import { useProfile } from './useProfile';
 import { Fragment } from 'react';
 
-import { Input, Modal, Button, Slider, ProfileSelect } from '@/components';
+import {
+  Input,
+  Modal,
+  Button,
+  Slider,
+  ProfileSelect,
+  RadioButtonGroup,
+} from '@/components';
 import {
   ArrowLeftIcon,
   DatePicker,
@@ -134,51 +141,15 @@ export const Profile = () => {
                   </LocalizationProvider>
                 )}
               />
-
-              <Controller
+              <RadioButtonGroup
                 control={control}
                 name='gender'
+                title='Gedner'
+                values={[
+                  { name: 'Male', value: 'male' },
+                  { name: 'Female', value: 'female' },
+                ]}
                 defaultValue={user?.gender}
-                render={({ field: { value, onChange } }) => (
-                  <FormControl>
-                    <FormLabel
-                      id='demo-radio-buttons-group-label'
-                      className='!text-black  !text-xl'
-                    >
-                      Gender
-                    </FormLabel>
-                    <RadioGroup value={value || ''} onChange={onChange} row>
-                      <FormControlLabel
-                        value='male'
-                        control={
-                          <Radio
-                            sx={{
-                              color: 'black',
-                              '&.Mui-checked': {
-                                color: 'black',
-                              },
-                            }}
-                          />
-                        }
-                        label='Male'
-                      />
-                      <FormControlLabel
-                        value='female'
-                        control={
-                          <Radio
-                            sx={{
-                              color: 'black',
-                              '&.Mui-checked': {
-                                color: 'black',
-                              },
-                            }}
-                          />
-                        }
-                        label='Female'
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                )}
               />
               <Button
                 type='submit'
