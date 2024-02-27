@@ -9,7 +9,15 @@ import {
 } from '@/Icons';
 import { useProfile } from './useProfile';
 import { Fragment } from 'react';
-import { Input, Modal, Button, Slider } from '@/components';
+
+import {
+  Input,
+  Modal,
+  Button,
+  Slider,
+  ProfileSelect,
+  RadioButtonGroup,
+} from '@/components';
 import {
   ArrowLeftIcon,
   DatePicker,
@@ -28,6 +36,7 @@ import {
   RadioGroup,
   Select,
 } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export const Profile = () => {
   const {
@@ -79,58 +88,18 @@ export const Profile = () => {
                 control={control}
               />
               <div className='flex gap-4 w-full items-center'>
-                <Controller
-                  name='country'
-                  control={control}
-                  defaultValue={user?.country || 'usa'}
-                  render={({ field: { onChange, value } }) => (
-                    <FormControl className='basis-2/5'>
-                      <InputLabel className='-ml-2 z-10 bg-white !px-1 block !text-black'>
-                        Country
-                      </InputLabel>
-                      <Select
-                        onChange={onChange}
-                        MenuProps={{
-                          disableScrollLock: true,
-                        }}
-                        sx={{
-                          color: 'black',
-                          '.MuiOutlinedInput-notchedOutline': {
-                            borderColor: 'black',
-                            borderWidth: '2px',
-                            borderRadius: '12px',
-                          },
-                          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                            borderColor: 'black',
-                            borderWidth: '2px',
-                          },
-                          '&:hover .MuiOutlinedInput-notchedOutline': {
-                            borderColor: 'black',
-                            borderWidth: '2px',
-                          },
-                          '.MuiSvgIcon-root ': {
-                            fill: 'black !important',
-                          },
-                        }}
-                        inputProps={{
-                          classes: {
-                            icon: 'fill-black',
-                          },
-                        }}
-                        IconComponent={() => (
-                          <div className='relative pointer-events-none'>
-                            <ArrowLeftIcon className='absolute -left-1 -bottom-1.5 rotate-90 -translate-x-full !w-5 !h-5' />
-                            <ArrowLeftIcon className='absolute -left-1 -top-1.5 -rotate-90 -translate-x-full !w-5 !h-5' />
-                          </div>
-                        )}
-                        value={value}
-                      >
-                        <MenuItem value='usa'>USA</MenuItem>
-                        <MenuItem value='uk'>UK</MenuItem>
-                      </Select>
-                    </FormControl>
-                  )}
-                />
+                <div className='basis-2/5'>
+                  <ProfileSelect
+                    defaultValue={user?.country || 'usa'}
+                    control={control}
+                    values={[
+                      { value: 'uk', key: 'uk' },
+                      { value: 'usa', key: 'usa' },
+                    ]}
+                    name='country'
+                    title='Country'
+                  />
+                </div>
                 <Input
                   control={control}
                   errors={errors}
@@ -172,51 +141,15 @@ export const Profile = () => {
                   </LocalizationProvider>
                 )}
               />
-
-              <Controller
+              <RadioButtonGroup
                 control={control}
                 name='gender'
+                title='Gedner'
+                values={[
+                  { name: 'Male', value: 'male' },
+                  { name: 'Female', value: 'female' },
+                ]}
                 defaultValue={user?.gender}
-                render={({ field: { value, onChange } }) => (
-                  <FormControl>
-                    <FormLabel
-                      id='demo-radio-buttons-group-label'
-                      className='!text-black  !text-xl'
-                    >
-                      Gender
-                    </FormLabel>
-                    <RadioGroup value={value || ''} onChange={onChange} row>
-                      <FormControlLabel
-                        value='male'
-                        control={
-                          <Radio
-                            sx={{
-                              color: 'black',
-                              '&.Mui-checked': {
-                                color: 'black',
-                              },
-                            }}
-                          />
-                        }
-                        label='Male'
-                      />
-                      <FormControlLabel
-                        value='female'
-                        control={
-                          <Radio
-                            sx={{
-                              color: 'black',
-                              '&.Mui-checked': {
-                                color: 'black',
-                              },
-                            }}
-                          />
-                        }
-                        label='Female'
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                )}
               />
               <Button
                 type='submit'
@@ -361,7 +294,7 @@ export const Profile = () => {
               rides{' '}
             </h3>
           ) : (
-            <div className='flex border-2 border-black rounded-xl items-center justify-between gap-20 py-4 px-6 mb-10'>
+            <div className='flex bordper-2 border-black rounded-xl items-center justify-between gap-20 py-4 px-6 mb-10'>
               <div className='ml-10 '>
                 <Slider imgs={user?.car?.photos || []} />
               </div>
@@ -417,12 +350,12 @@ export const Profile = () => {
                 </span>
               </Fragment>
             ) : (
-              <Fragment>
+              <Link to='/profile/car' className='flex items-center gap-4 '>
                 <span className='pt-1'>update info</span>
                 <span>
                   <PencilIcon />
                 </span>
-              </Fragment>
+              </Link>
             )}
           </button>
 

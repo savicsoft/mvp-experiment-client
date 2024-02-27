@@ -16,7 +16,7 @@ export type UserType = {
     year: string;
     body_style: string;
     gas_type: string;
-    fuel_efficiency: number;
+    fuel_efficiency: string;
     color: string;
     photos: string[];
   };
