@@ -2,12 +2,14 @@ import { Input, ProfileSelect, RadioButtonGroup } from '@/components';
 import { useProfileCar } from './useProfileCar';
 import { Link } from 'react-router-dom';
 import { carColors } from '@/config';
+import { DeleteCarIcon } from '@/Icons';
 
 export const ProfileCar = () => {
-  const { control, errors, handleSubmit, register, onSubmit } = useProfileCar();
+  const { control, errors, handleSubmit, register, onSubmit, car } =
+    useProfileCar();
 
   return (
-    <div className='mx-6 '>
+    <div className='mx-6 mb-20'>
       <h3 className='text-stone-650 text-lg font-thin my-12'>
         <Link to='/profile'>Profile</Link> / Car Information
       </h3>
@@ -98,6 +100,38 @@ export const ProfileCar = () => {
                   }
                 />
               ))}
+            </div>
+            <div className='text-[#231918]'>
+              {car?.photos ? (
+                <div>
+                  <h3 className='text-2xl'>Photos</h3>
+                  <div className='flex items-center flex-wrap gap-3'>
+                    {car.photos.map((url) => (
+                      <div className='relative'>
+                        <img
+                          src={url}
+                          alt={url}
+                          key={url}
+                          className='w-24 h-24 object-cover rounded-xl border border-black'
+                        />
+                        <button className='bg-white w-4 h-4 absolute top-2 right-2 flex items-center justify-center rounded'>
+                          <DeleteCarIcon />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className='flex gap-8'>
+                  <div>
+                    <h3 className='text-2xl'>Photos</h3>
+                    <p className='text-lg'>Up to 5</p>
+                  </div>
+                  <button className='flex justify-center items-center px-16 py-12   border border-[#231918] rounded'>
+                    <img src='/images/camera.png' alt='camera' />
+                  </button>
+                </div>
+              )}
             </div>
           </form>
           <div className=' h-full'>

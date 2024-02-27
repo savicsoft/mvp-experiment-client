@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 
 export const useProfileCar = () => {
   const queryClient = useQueryClient();
-  const user = queryClient.getQueriesData<UserType>({
+  const car = queryClient.getQueriesData<UserType>({
     queryKey: ['user'],
   })?.[0]?.[1]?.car;
 
@@ -23,22 +23,22 @@ export const useProfileCar = () => {
     resolver: zodResolver(profileCarSchema),
     shouldUnregister: true,
     defaultValues: {
-      body_style: user?.body_style || '',
-      brand: user?.brand || '',
-      color: user?.color || '',
-      fuel_efficiency: user?.fuel_efficiency || '',
-      gas_type: user?.gas_type || '',
-      model: user?.model || '',
-      photos: user?.photos || [],
-      registration_number: user?.registration_number || '',
-      year: user?.year || '',
+      body_style: car?.body_style || '',
+      brand: car?.brand || '',
+      color: car?.color || '',
+      fuel_efficiency: car?.fuel_efficiency || '',
+      gas_type: car?.gas_type || '',
+      model: car?.model || '',
+      photos: car?.photos || [],
+      registration_number: car?.registration_number || '',
+      year: car?.year || '',
     },
   });
 
   const { data: fetchedData } = useQuery({
     queryKey: ['user'],
     queryFn: getUser,
-    enabled: user === undefined,
+    enabled: car === undefined,
     staleTime: Infinity,
   });
 
@@ -52,5 +52,5 @@ export const useProfileCar = () => {
     console.log(data);
   };
 
-  return { register, errors, handleSubmit, control, onSubmit };
+  return { register, errors, handleSubmit, control, onSubmit, car };
 };
