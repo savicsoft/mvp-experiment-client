@@ -2,7 +2,6 @@ import { Input, ProfileSelect, RadioButtonGroup } from '@/components';
 import { useProfileCar } from './useProfileCar';
 import { Link } from 'react-router-dom';
 import { carColors } from '@/config';
-import { DeleteCarIcon } from '@/Icons';
 
 export const ProfileCar = () => {
   const { control, errors, handleSubmit, register, onSubmit, car } =
@@ -105,21 +104,6 @@ export const ProfileCar = () => {
               {car?.photos ? (
                 <div>
                   <h3 className='text-2xl'>Photos</h3>
-                  <div className='flex items-center flex-wrap gap-3'>
-                    {car.photos.map((url) => (
-                      <div className='relative'>
-                        <img
-                          src={url}
-                          alt={url}
-                          key={url}
-                          className='w-24 h-24 object-cover rounded-xl border border-black'
-                        />
-                        <button className='bg-white w-4 h-4 absolute top-2 right-2 flex items-center justify-center rounded'>
-                          <DeleteCarIcon />
-                        </button>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               ) : (
                 <div className='flex gap-8'>

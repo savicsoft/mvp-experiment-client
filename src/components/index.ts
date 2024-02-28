@@ -9,3 +9,4 @@ export * from './TwinElements';
 export * from './Slider';
 export * from './ProfileSelect';
 export * from './Radio';
+export * from './CarImageComponent';
