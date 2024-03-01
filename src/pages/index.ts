@@ -7,3 +7,4 @@ export * from './DefaultView';
 export * from './Profile';
 export * from './ForgotPassword';
 export * from './ResetPassword';
+export * from './ProfileCar';

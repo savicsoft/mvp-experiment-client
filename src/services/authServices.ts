@@ -18,9 +18,9 @@ export const getUser = () => {
       brand: 'car',
       model: 'model',
       year: '1234',
-      body_style: 'body style',
-      gas_type: 'gas_type',
-      fuel_efficiency: 24,
+      body_style: 'second',
+      gas_type: 'first',
+      fuel_efficiency: '1',
       color: 'red',
       photos: [
         '/images/profile-banner.png',
