@@ -16,6 +16,7 @@ import {
   ResetPassword,
   ProfileCar,
 } from '@/pages';
+import { DisplayRides } from './pages/DisplayRides';
 
 const routing = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const routing = createBrowserRouter([
       {
         path: '/profile/car',
         element: <ProfileCar />,
+      },
+      {
+        path: '/display-rides',
+        element: <DisplayRides />,
       },
     ],
   },

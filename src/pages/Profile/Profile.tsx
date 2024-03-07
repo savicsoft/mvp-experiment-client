@@ -18,24 +18,11 @@ import {
   ProfileSelect,
   RadioButtonGroup,
 } from '@/components';
-import {
-  ArrowLeftIcon,
-  DatePicker,
-  LocalizationProvider,
-} from '@mui/x-date-pickers';
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { Controller } from 'react-hook-form';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
-import {
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  InputLabel,
-  MenuItem,
-  Radio,
-  RadioGroup,
-  Select,
-} from '@mui/material';
+
 import { Link } from 'react-router-dom';
 
 export const Profile = () => {
