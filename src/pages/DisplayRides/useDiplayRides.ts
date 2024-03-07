@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { RideTypes } from './components/RideTypes';
-import { getRideService } from '@/services/rideServices';
+import { getRideService } from '@/services';
 import { OpenStateFiltersType } from './DisplayRideType';
 export const useDisplayRides = () => {
   const [isActive, setIsActive] = useState<OpenStateFiltersType>({

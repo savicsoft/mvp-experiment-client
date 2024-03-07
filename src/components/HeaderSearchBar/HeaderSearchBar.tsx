@@ -4,6 +4,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useHeaderSearchBar } from './useHeaderSearchBar';
 import { InputLabel, MenuItem, Select } from '@mui/material';
 import { MinusIcon, PlusIcon, PersonAddIcon } from '@/Icons';
+import dayjs from 'dayjs';
 
 export const HeaderSearchBar = () => {
   const {
@@ -24,7 +25,10 @@ export const HeaderSearchBar = () => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <form className='mx-6 border rounded-md border-[#231918] '>
+      <form
+        className='mx-6 border rounded-md border-[#231918]'
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <div className='px-7 py-10 flex justify-between items-center'>
           <input
             type='text'
@@ -43,7 +47,8 @@ export const HeaderSearchBar = () => {
             onChange={handleChangePlaceTo}
           />
           <DatePicker
-            value={date}
+            {...register('date')}
+            value={date ?? dayjs()}
             onChange={handleChangeDate}
             sx={{
               border: 1,
@@ -63,7 +68,9 @@ export const HeaderSearchBar = () => {
                 paddingInline: 1,
               }}
             >
-              <span>Passengers: {totalPassengers}</span>
+              <span {...register('passangers')}>
+                Passengers: {totalPassengers}
+              </span>
               <PersonAddIcon />
             </InputLabel>
             <Select
@@ -141,7 +148,7 @@ export const HeaderSearchBar = () => {
           </div>
           <button
             className='rounded-md bg-[#F52B38] text-white text-3xl font-jomhuria h-14 w-48'
-            onClick={handleSubmit(onSubmit)}
+            type='submit'
           >
             Search
           </button>

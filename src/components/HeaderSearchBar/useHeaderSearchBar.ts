@@ -1,10 +1,6 @@
 import { SetStateAction, useState } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { HeaderSearchBarSchema } from '@/schema/HeaderSearchBarSchema';
-import { HeaderSearchBarSchemaType } from '@/schema/type';
-
 import { HeaderSearchBarPassengerType } from './HeaderSearchBarPassangersTypes';
 
 export const useHeaderSearchBar = () => {
@@ -60,23 +56,24 @@ export const useHeaderSearchBar = () => {
     }));
   };
 
-  const { register, handleSubmit } = useForm<HeaderSearchBarSchemaType>({
+  const { register, handleSubmit, control } = useForm({
     mode: 'onSubmit',
-    resolver: zodResolver(HeaderSearchBarSchema),
   });
 
-  const onSubmit = (data: HeaderSearchBarSchemaType) => {
+  const onSubmit = (data) => {
     console.log(data);
   };
 
   return {
     register,
     handleSubmit,
+    control,
     date,
     placeFrom,
     placeTo,
     passengers,
     totalPassengers,
+    isPassangersOpen,
     setDate,
     onSubmit,
     handleChangeDate,
